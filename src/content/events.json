@@ -1,0 +1,52 @@
+[
+  {
+    "id": "arduino-workshop-2024",
+    "slug": "arduino-workshop-2024",
+    "title": "Introduction to Arduino Workshop",
+    "date": "2024-03-15",
+    "type": "Workshop",
+    "status": "upcoming",
+    "description": "Learn the basics of Arduino programming and build your first IoT project.",
+    "longDescription": "Join us for a hands-on workshop where you'll learn Arduino fundamentals, circuit design, and programming. Perfect for beginners! We'll cover basic electronics, sensors, actuators, and how to create your own IoT projects.",
+    "location": "Engineering Lab, BUC",
+    "image": "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=800"
+    ],
+    "videos": ["https://youtube.com/watch?v=example"],
+    "registrationLink": "https://forms.gle/example"
+  },
+  {
+    "id": "ieee-day-2023",
+    "slug": "ieee-day-2023",
+    "title": "IEEE Day Celebration 2023",
+    "date": "2023-10-04",
+    "type": "Social",
+    "status": "past",
+    "description": "Celebrating IEEE Day with fun activities, competitions, and networking.",
+    "longDescription": "Join us in celebrating IEEE Day! The event featured tech talks, competitions, networking sessions, and fun activities. It was a great opportunity to connect with fellow IEEE members and learn about the impact of IEEE worldwide.",
+    "location": "BUC Main Hall",
+    "image": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1200",
+    "gallery": [
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800"
+    ],
+    "videos": []
+  },
+  {
+    "id": "python-bootcamp-2024",
+    "slug": "python-bootcamp-2024",
+    "title": "Python Programming Bootcamp",
+    "date": "2024-04-20",
+    "type": "Workshop",
+    "status": "upcoming",
+    "description": "Intensive Python bootcamp for beginners covering fundamentals to advanced topics.",
+    "longDescription": "A comprehensive Python programming bootcamp designed for beginners. Learn Python fundamentals, data structures, object-oriented programming, and practical applications. Includes hands-on projects and real-world examples.",
+    "location": "Computer Lab 2, BUC",
+    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200",
+    "gallery": [],
+    "videos": [],
+    "registrationLink": "https://forms.gle/example"
+  }
+]

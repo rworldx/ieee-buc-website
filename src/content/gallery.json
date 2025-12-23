@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "Arduino Workshop 2024",
+    "category": "Workshops",
+    "type": "image",
+    "thumbnail": "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=400",
+    "fullSize": "https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&q=80&w=1200",
+    "alt": "Students working on Arduino projects"
+  },
+  {
+    "id": "2",
+    "title": "IEEE Day Celebration",
+    "category": "Social",
+    "type": "image",
+    "thumbnail": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=400",
+    "fullSize": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1200",
+    "alt": "IEEE Day celebration group photo"
+  },
+  {
+    "id": "3",
+    "title": "Python Workshop Highlights",
+    "category": "Workshops",
+    "type": "video",
+    "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=400",
+    "videoUrl": "https://youtube.com/watch?v=example",
+    "alt": "Python workshop video highlights"
+  },
+  {
+    "id": "4",
+    "title": "Tech Talk Series",
+    "category": "Seminars",
+    "type": "image",
+    "thumbnail": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400",
+    "fullSize": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200",
+    "alt": "Guest speaker presenting at tech talk"
+  },
+  {
+    "id": "5",
+    "title": "Robotics Competition",
+    "category": "Competitions",
+    "type": "image",
+    "thumbnail": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+    "fullSize": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+    "alt": "Students competing in robotics competition"
+  },
+  {
+    "id": "6",
+    "title": "Community Outreach",
+    "category": "Social",
+    "type": "image",
+    "thumbnail": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400",
+    "fullSize": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1200",
+    "alt": "IEEE members at community outreach event"
+  }
+]

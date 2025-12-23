@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* IEEE Color Palette */
+  --color-ieee-blue: #00629b;
+  --color-ieee-blue-light: #0080c9;
+  --color-neutral-50: #faf9f6;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-600: #6b7280;
+  --color-neutral-800: #2c3e50;
+  
+  /* Border Radius */
+  --radius-card: 12px;
+  
+  /* Container Width */
+  --width-container: 1440px;
+  
+  /* Spacing */
+  --spacing-section: 120px;
+  
+  /* Typography */
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply text-neutral-800 bg-white;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+  
+  /* Accessible focus styles */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ieee-blue ring-0;
+  }
+}
+
+@layer components {
+  .container-custom {
+    max-width: var(--width-container);
+    @apply mx-auto px-6 md:px-8 lg:px-12;
+  }
+  
+  .section-spacing {
+    @apply py-20 md:py-28 lg:py-[120px];
+  }
+}
