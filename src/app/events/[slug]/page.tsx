@@ -94,9 +94,11 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {event.gallery.map((image, index) => (
                   <div key={index} className="relative aspect-square bg-neutral-100 rounded-lg overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center text-neutral-400 text-sm">
-                      Image {index + 1}
-                    </div>
+                    <img
+                      src={image}
+                      alt={`Gallery image ${index + 1}`}
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                 ))}
               </div>

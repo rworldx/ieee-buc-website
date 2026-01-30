@@ -17,10 +17,10 @@ export default function EventsFilter({ events }: EventsFilterProps) {
   const upcomingEvents = events.filter((e) => e.status === 'upcoming');
   const pastEvents = events.filter((e) => e.status === 'past');
 
-  const displayedEvents = 
+  const displayedEvents =
     filter === 'upcoming' ? upcomingEvents :
-    filter === 'past' ? pastEvents :
-    events;
+      filter === 'past' ? pastEvents :
+        events;
 
   return (
     <Section className="bg-white">
@@ -29,31 +29,29 @@ export default function EventsFilter({ events }: EventsFilterProps) {
         <div className="inline-flex bg-neutral-100 rounded-lg p-1">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-              filter === 'all'
-                ? 'bg-white text-ieee-blue shadow-md'
-                : 'text-neutral-600 hover:text-neutral-800'
-            }`}
+            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'all'
+              ? 'bg-white text-ieee-blue shadow-md'
+              : 'text-neutral-600 hover:text-neutral-800'
+              }`}
           >
             All Events
           </button>
+
           <button
             onClick={() => setFilter('upcoming')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-              filter === 'upcoming'
+            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'upcoming'
                 ? 'bg-white text-ieee-blue shadow-md'
                 : 'text-neutral-600 hover:text-neutral-800'
-            }`}
+              }`}
           >
             Upcoming
           </button>
           <button
             onClick={() => setFilter('past')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${
-              filter === 'past'
-                ? 'bg-white text-ieee-blue shadow-md'
-                : 'text-neutral-600 hover:text-neutral-800'
-            }`}
+            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'past'
+              ? 'bg-white text-ieee-blue shadow-md'
+              : 'text-neutral-600 hover:text-neutral-800'
+              }`}
           >
             Past Events
           </button>

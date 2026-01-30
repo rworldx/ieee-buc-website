@@ -11,8 +11,8 @@ export default function FeaturedEvents() {
   return (
     <Section className="bg-neutral-50">
       <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4">Upcoming Events</h2>
-        <p className="text-xl text-neutral-600">Join us for exciting workshops and activities</p>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">Events</h2>
+        <p className="text-xl text-neutral-600">Explore our workshops, seminars, and activities</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
