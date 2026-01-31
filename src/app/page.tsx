@@ -1,5 +1,6 @@
 import Hero from '@/components/home/Hero';
 import StatsSection from '@/components/home/StatsSection';
+import VisionMissionSection from '@/components/home/VisionMissionSection';
 import FeaturedEvents from '@/components/home/FeaturedEvents';
 import BenefitsSection from '@/components/home/BenefitsSection';
 import CTABand from '@/components/home/CTABand';
@@ -19,9 +20,10 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
-      
+
       <Hero />
       <StatsSection />
+      <VisionMissionSection />
       <FeaturedEvents />
       <BenefitsSection />
       <CTABand />

@@ -15,7 +15,11 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-export default function ContactForm() {
+interface ContactFormProps {
+  recipientEmail: string;
+}
+
+export default function ContactForm({ recipientEmail }: ContactFormProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const {
     register,
@@ -28,29 +32,20 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      const formspreeUrl = process.env.NEXT_PUBLIC_FORMSPREE_URL;
-      
-      if (!formspreeUrl) {
-        console.error('Formspree URL not configured');
-        setSubmitStatus('error');
-        return;
-      }
+      // Construct email body
+      const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+      const subject = `[Website Inquiry] ${data.subject}`;
 
-      const response = await fetch(formspreeUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      // Create mailto link
+      const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-      if (response.ok) {
-        setSubmitStatus('success');
-        reset();
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        setSubmitStatus('error');
-      }
+      // Open email client
+      window.location.href = mailtoLink;
+
+      // Show success message
+      setSubmitStatus('success');
+      reset();
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch {
       setSubmitStatus('error');
     }

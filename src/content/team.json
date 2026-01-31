@@ -1,89 +1,102 @@
 {
   "executive": [
     {
-      "name": "Ms. Abir Al-Sideiri",
+      "name": "Dr. Abir Al Sideiri",
       "role": "Counselor",
-      "email": "counselor@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      "email": "abir@buc.edu.om",
+      "photo": "",
       "bio": "Faculty advisor for IEEE BUC Student Branch",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "female"
     },
     {
       "name": "Rawan Darwish",
       "role": "Chair",
-      "email": "chair@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
+      "email": "f202200347@buc.edu.om",
+      "photo": "",
       "bio": "Leading the IEEE BUC Student Branch initiatives",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "female"
     },
     {
       "name": "Abdullah Al Farsi",
       "role": "Vice Chair",
       "email": "vicechair@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+      "photo": "",
       "bio": "Supporting branch operations and event coordination",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "male"
     },
     {
-      "name": "Hanan Al Mahmoodi",
+      "name": "Maather Al Ghareebi",
       "role": "Secretary",
       "email": "secretary@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
+      "photo": "",
       "bio": "Managing branch documentation and communications",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "female"
     },
     {
       "name": "Rashid Al Ghafri",
       "role": "Webmaster",
-      "email": "webmaster@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400",
+      "email": "m202200250@buc.edu.om",
+      "photo": "",
       "bio": "Maintaining the IEEE BUC website and digital presence",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "male"
     },
     {
-      "name": "Omar Abubaker",
+      "name": "Muna Al Kaabi",
       "role": "Treasurer",
       "email": "treasurer@ieee-buc.om",
-      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+      "photo": "",
       "bio": "Managing branch finances and budgets",
-      "linkedin": ""
+      "linkedin": "",
+      "gender": "female"
     }
   ],
   "members": [
     {
       "name": "Aisha Al Qassabi",
       "department": "Software Engineering",
-      "photo": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=400"
-    },
-    {
-      "name": "Muna Al Kaabi",
-      "department": "Computer Science",
-      "photo": "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=400"
-    },
-    {
-      "name": "Maather Al Ghareebi",
-      "department": "Information System",
-      "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400"
+      "photo": "",
+      "gender": "female"
     },
     {
       "name": "Salha Al Balushi",
       "department": "Software Engineering",
-      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400"
+      "photo": "",
+      "gender": "female"
     },
     {
       "name": "Abdullrahman Al Badi",
       "department": "Computer Science",
-      "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
+      "photo": "",
+      "gender": "male"
     },
     {
       "name": "Sheikha Al Kaabi",
       "department": "Information System",
-      "photo": "https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&q=80&w=400"
+      "photo": "",
+      "gender": "female"
     },
     {
       "name": "Omar Al Shukaili",
       "department": "Software Engineering",
-      "photo": "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&q=80&w=400"
+      "photo": "",
+      "gender": "male"
+    },
+    {
+      "name": "Hanan Al Mahmoodi",
+      "department": "Information System",
+      "photo": "",
+      "gender": "female"
+    },
+    {
+      "name": "Omar Abubaker",
+      "department": "Software Engineering",
+      "photo": "",
+      "gender": "male"
     }
   ]
 }

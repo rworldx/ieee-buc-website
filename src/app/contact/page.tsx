@@ -31,13 +31,13 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-            <ContactForm />
+            <ContactForm recipientEmail={siteInfo.email} />
           </div>
 
           {/* Contact Information */}
           <div>
             <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-            
+
             <div className="space-y-6 mb-8">
               {/* Email */}
               <div className="flex items-start">

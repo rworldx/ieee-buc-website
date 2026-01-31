@@ -26,12 +26,14 @@ export const ExecutiveMemberSchema = z.object({
   photo: z.string(),
   bio: z.string().optional(),
   linkedin: z.string().optional(),
+  gender: z.enum(['male', 'female']).optional(),
 });
 
 export const MemberSchema = z.object({
   name: z.string(),
   department: z.string().optional(),
   photo: z.string(),
+  gender: z.enum(['male', 'female']).optional(),
 });
 
 export const GalleryItemSchema = z.object({
