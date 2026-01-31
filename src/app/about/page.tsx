@@ -27,10 +27,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto space-y-8">
           <AboutCard title="Our Mission" icon={<Target size={28} className="text-ieee-blue" />}>
             <p>
-              The IEEE Student Branch at Buraimi University College is dedicated to advancing technology for humanity by fostering innovation, collaboration, and professional development among students in Oman.
-            </p>
-            <p>
-              We strive to create an environment where students can explore emerging technologies, develop technical skills, and build lasting professional networks that will serve them throughout their careers.
+              To advance students' professional and technical abilities through organised engagement between industry-based technology and academics at the BUC.
             </p>
           </AboutCard>
         </div>
@@ -41,10 +38,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto space-y-8">
           <AboutCard title="Our Vision" icon={<Lightbulb size={28} className="text-ieee-blue" />}>
             <p>
-              To be the leading student organization in Oman that empowers future engineers and technologists through hands-on learning, networking, and exposure to cutting-edge technologies.
-            </p>
-            <p>
-              We envision a community where every member has the opportunity to innovate, lead, and make a meaningful impact in the field of technology and engineering.
+              To become a leading IEEE BUC Student Branch, promoting innovation and technical advancement among BUC students.
             </p>
           </AboutCard>
         </div>
@@ -111,8 +105,8 @@ export default function AboutPage() {
       {/* IEEE Affiliation Section */}
       <Section className="bg-white">
         <div className="max-w-5xl mx-auto space-y-8">
-          <AboutCard 
-            title="IEEE Global Affiliation" 
+          <AboutCard
+            title="IEEE Global Affiliation"
             icon={<ExternalLink size={28} className="text-ieee-blue" />}
           >
             <p>

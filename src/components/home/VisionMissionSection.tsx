@@ -22,9 +22,7 @@ export default function VisionMissionSection() {
                         </div>
                         <h3 className="text-2xl font-bold mb-4 text-neutral-800">Our Vision</h3>
                         <p className="text-neutral-600 leading-relaxed">
-                            To be a leading student branch that inspires innovation, fosters technical excellence,
-                            and creates a vibrant community of future engineers and technologists who will shape
-                            the technological landscape of Oman and beyond.
+                            To become a leading IEEE BUC Student Branch, promoting innovation and technical advancement among BUC students.
                         </p>
                     </div>
 
@@ -35,10 +33,7 @@ export default function VisionMissionSection() {
                         </div>
                         <h3 className="text-2xl font-bold mb-4 text-neutral-800">Our Mission</h3>
                         <p className="text-neutral-600 leading-relaxed">
-                            To provide students with opportunities for professional development, technical growth,
-                            and networking through workshops, competitions, and collaborative projects. We strive
-                            to bridge the gap between academic learning and industry practice while promoting
-                            ethical standards and lifelong learning.
+                            To advance students' professional and technical abilities through organised engagement between industry-based technology and academics at the BUC.
                         </p>
                     </div>
                 </div>
