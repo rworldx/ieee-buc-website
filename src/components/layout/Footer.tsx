@@ -32,7 +32,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-lg mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="https://instagram.com/ieee_buc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
+              <a href="https://instagram.com/ieee.buc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
               <a href="https://facebook.com/ieeebuc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
