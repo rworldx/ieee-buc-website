@@ -1,10 +1,10 @@
 import Section from '../layout/Section';
 
 const stats = [
-  { label: 'Active Members', value: '12+' },
-  { label: 'Events Hosted', value: '30+' },
-  { label: 'Years Active', value: '6+' },
-  { label: 'Workshops', value: '20+' },
+  { label: 'Active Members', value: '15+' },
+  { label: 'events coming', value: '5+' },
+  { label: 'months active', value: '3+' },
+  { label: 'workshops', value: '3+' },
 ];
 
 export default function StatsSection() {

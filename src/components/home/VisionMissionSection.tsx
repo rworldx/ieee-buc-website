@@ -22,7 +22,7 @@ export default function VisionMissionSection() {
                         </div>
                         <h3 className="text-2xl font-bold mb-4 text-neutral-800">Our Vision</h3>
                         <p className="text-neutral-600 leading-relaxed">
-                            To become a leading IEEE BUC Student Branch, promoting innovation and technical advancement among BUC students.
+                            To become a leading IEEE Student Branch, promoting innovation and technical advancement among BUC students.
                         </p>
                     </div>
 
