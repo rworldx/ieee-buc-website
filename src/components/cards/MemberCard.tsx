@@ -49,27 +49,26 @@ export default function MemberCard({ member, isExecutive = false }: MemberCardPr
           </p>
         )}
 
-        {member.email && (
-          <div className="flex justify-center space-x-3">
+        <div className="flex justify-center space-x-3">
+          <a
+            href={`mailto:${member.email || 'ieee@buc.edu.om'}`}
+            className="text-neutral-600 hover:text-ieee-blue transition-colors"
+            aria-label={`Email ${member.name}`}
+          >
+            <Mail size={18} />
+          </a>
+          {member.linkedin && (
             <a
-              href={`mailto:${member.email}`}
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-neutral-600 hover:text-ieee-blue transition-colors"
-              aria-label={`Email ${member.name}`}
+              aria-label={`${member.name} on LinkedIn`}
             >
-              <Mail size={18} />
+              <Linkedin size={18} />
             </a>
-            {member.linkedin && (
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-600 hover:text-ieee-blue transition-colors"
-                aria-label={`${member.name} on LinkedIn`}
-              >
-                <Linkedin size={18} />
-              </a>
-            )}
-          </div>
+          )}
+        </div>
         )}
       </div>
     </div>
