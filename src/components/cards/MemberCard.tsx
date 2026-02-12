@@ -69,7 +69,6 @@ export default function MemberCard({ member, isExecutive = false }: MemberCardPr
             </a>
           )}
         </div>
-        )}
       </div>
     </div>
   );
