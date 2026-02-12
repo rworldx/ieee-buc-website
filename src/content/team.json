@@ -97,6 +97,27 @@
       "department": "Software Engineering",
       "photo": "",
       "gender": "male"
+    },
+    {
+      "name": "Al-Anoud Ahmed Alamri",
+      "department": "Software Engineering",
+      "email": "F202100398@buc.edu.om",
+      "photo": "",
+      "gender": "female"
+    },
+    {
+      "name": "Bashair Hamed Alsaidi",
+      "department": "Software Engineering",
+      "email": "F202200049@buc.edu.om",
+      "photo": "",
+      "gender": "female"
+    },
+    {
+      "name": "Afnan Said Alrisi",
+      "department": "Software Engineering",
+      "email": "F202300081@buc.edu.om",
+      "photo": "",
+      "gender": "female"
     }
   ]
 }
