@@ -49,7 +49,7 @@ export default function MemberCard({ member, isExecutive = false }: MemberCardPr
           </p>
         )}
 
-        {'email' in member && (
+        {member.email && (
           <div className="flex justify-center space-x-3">
             <a
               href={`mailto:${member.email}`}

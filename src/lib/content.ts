@@ -32,6 +32,7 @@ export const ExecutiveMemberSchema = z.object({
 export const MemberSchema = z.object({
   name: z.string(),
   department: z.string().optional(),
+  email: z.string().email().optional(),
   photo: z.string(),
   gender: z.enum(['male', 'female']).optional(),
 });
