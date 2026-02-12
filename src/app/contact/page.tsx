@@ -80,16 +80,17 @@ export default function ContactPage() {
             {/* Social Media */}
             <div>
               <h3 className="font-semibold text-lg mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
+              <div className="flex">
                 {siteInfo.socials.instagram && (
                   <a
                     href={siteInfo.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg flex items-center justify-center transition-colors"
+                    className="flex items-center gap-3 px-4 py-2 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg transition-all duration-300 border border-neutral-200 hover:border-ieee-blue group"
                     aria-label="Instagram"
                   >
-                    <Instagram size={20} />
+                    <Instagram size={20} className="group-hover:scale-110 transition-transform" />
+                    <span className="font-medium text-sm">@ieee.buc</span>
                   </a>
                 )}
               </div>
