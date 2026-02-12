@@ -38,25 +38,12 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto space-y-8">
           <AboutCard title="Our Vision" icon={<Lightbulb size={28} className="text-ieee-blue" />}>
             <p>
-              To become a leading IEEE BUC Student Branch, promoting innovation and technical advancement among BUC students.
+              To become a leading IEEE Student Branch, promoting innovation and technical advancement among BUC students.
             </p>
           </AboutCard>
         </div>
       </Section>
 
-      {/* History Section */}
-      <Section className="bg-white">
-        <div className="max-w-5xl mx-auto space-y-8">
-          <AboutCard title="Our History" icon={<History size={28} className="text-ieee-blue" />}>
-            <p>
-              Founded in <strong>2018</strong>, the IEEE BUC Student Branch has grown to become one of the most active student organizations at Buraimi University College. Over the years, we've hosted dozens of workshops, competitions, and networking events throughout the academic year, impacting hundreds of students.
-            </p>
-            <p>
-              Our branch has consistently been recognized by the IEEE Oman Section for our commitment to excellence and student development. We take pride in our track record of organizing high-quality technical events and fostering a vibrant community of technology enthusiasts.
-            </p>
-          </AboutCard>
-        </div>
-      </Section>
 
       {/* What We Do Section */}
       <Section className="bg-neutral-50">
