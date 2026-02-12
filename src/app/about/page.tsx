@@ -46,7 +46,7 @@ export default function AboutPage() {
 
 
       {/* What We Do Section */}
-      <Section className="bg-neutral-50">
+      <Section className="bg-white">
         <div className="max-w-5xl mx-auto space-y-8">
           <AboutCard title="What We Do" icon={<Rocket size={28} className="text-ieee-blue" />}>
             <div className="space-y-8 mt-4">
@@ -90,7 +90,7 @@ export default function AboutPage() {
       </Section>
 
       {/* IEEE Affiliation Section */}
-      <Section className="bg-white">
+      <Section className="bg-neutral-50">
         <div className="max-w-5xl mx-auto space-y-8">
           <AboutCard
             title="IEEE Global Affiliation"
