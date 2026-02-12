@@ -73,6 +73,7 @@
     {
       "name": "Abdullrahman Al Badi",
       "department": "Computer Science",
+      "email": "m2023000358@buc.edu.om",
       "photo": "",
       "gender": "male"
     },
@@ -93,6 +94,7 @@
     {
       "name": "Hanan Al Mahmoodi",
       "department": "Information System",
+      "email": "f202200002@buc.edu.om",
       "photo": "",
       "gender": "female"
     },
@@ -120,7 +122,7 @@
     {
       "name": "Afnan Alrisi",
       "department": "Software Engineering",
-      "email": "F202300081@buc.edu.om",
+      "email": "f2023000181@buc.edu.om",
       "photo": "",
       "gender": "female"
     },
