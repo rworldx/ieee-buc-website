@@ -92,39 +92,6 @@ export default function ContactPage() {
                     <Instagram size={20} />
                   </a>
                 )}
-                {siteInfo.socials.facebook && (
-                  <a
-                    href={siteInfo.socials.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg flex items-center justify-center transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <Facebook size={20} />
-                  </a>
-                )}
-                {siteInfo.socials.linkedin && (
-                  <a
-                    href={siteInfo.socials.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg flex items-center justify-center transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin size={20} />
-                  </a>
-                )}
-                {siteInfo.socials.twitter && (
-                  <a
-                    href={siteInfo.socials.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg flex items-center justify-center transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <Twitter size={20} />
-                  </a>
-                )}
               </div>
             </div>
           </div>

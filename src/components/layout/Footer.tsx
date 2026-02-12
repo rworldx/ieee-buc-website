@@ -35,15 +35,6 @@ export default function Footer() {
               <a href="https://instagram.com/ieee.buc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://facebook.com/ieeebuc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="https://linkedin.com/company/ieee-buc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://twitter.com/ieee_buc" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
             </div>
           </div>
         </div>
