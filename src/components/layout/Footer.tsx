@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 export default function Footer() {
@@ -11,16 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <Image
-                src="/images/logo.png"
-                alt="IEEE BUC Logo"
-                width={40}
-                height={40}
-                className="w-10 h-10 object-contain brightness-0 invert"
-              />
-              <h3 className="font-semibold text-lg">IEEE BUC Student Branch</h3>
-            </div>
+            <h3 className="font-semibold text-lg mb-4">IEEE BUC Student Branch</h3>
             <p className="text-neutral-400 text-sm leading-relaxed">
               Advancing technology for humanity through innovation and collaboration.
             </p>

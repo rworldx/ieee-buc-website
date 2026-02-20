@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 
@@ -37,14 +36,10 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src="/images/logo.png"
-                alt="IEEE BUC Student Branch Logo"
-                width={80}
-                height={80}
-                className="w-16 h-16 object-contain"
-              />
-              <span className="font-semibold text-xl hidden sm:block">
+              <div className="w-10 h-10 bg-ieee-blue rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                IEEE
+              </div>
+              <span className="font-semibold text-lg hidden sm:block">
                 BUC Student Branch
               </span>
             </Link>
