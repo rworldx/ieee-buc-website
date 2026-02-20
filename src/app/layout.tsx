@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   title: "IEEE Student Branch - Buraimi University College",
   description: "Official website of the IEEE Student Branch at Buraimi University College, Oman",
   icons: {
-    icon: [{ url: "/images/logo.png", type: "image/png" }],
-    apple: [{ url: "/images/logo.png" }],
+    icon: [{ url: "/images/logo.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/images/logo.svg" }],
   },
 };
 
