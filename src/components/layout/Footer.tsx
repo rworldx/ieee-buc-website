@@ -10,7 +10,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">IEEE BUC Student Branch</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-ieee-blue rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                IEEE
+              </div>
+              <h3 className="font-semibold text-lg text-white">BUC Student Branch</h3>
+            </div>
             <p className="text-neutral-400 text-sm leading-relaxed">
               Advancing technology for humanity through innovation and collaboration.
             </p>
