@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import Section from '@/components/layout/Section';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { getEventBySlug, getEvents } from '@/lib/content';
@@ -65,7 +65,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
 
           {/* Cover Image Box */}
           <div className="relative w-full aspect-[21/9] rounded-t-2xl overflow-hidden shadow-2xl bg-neutral-200">
-            <Image
+            <NextImage
               src={event.image}
               alt={event.title}
               fill
