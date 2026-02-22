@@ -1,5 +1,12 @@
 [
   {
+    "id": "3",
+    "title": "IEEE BUC Student Branch Officially Launched",
+    "date": "2026-02-15",
+    "excerpt": "The IT Department at Al Buraimi University College celebrated the official inauguration of the IEEE BUC Student Branch.",
+    "content": "The inauguration was attended by Dr. Yahya Al Balushi, Vice Chair of the IEEE Oman Section, who highlighted the professional and academic empowering roles of IEEE for students. This milestone reflects the college's commitment to fostering technical innovation and research."
+  },
+  {
     "id": "1",
     "title": "New Workshop Series Announced",
     "date": "2024-01-15",
@@ -14,4 +21,3 @@
     "content": "We're proud to announce that IEEE BUC has been awarded the Most Active Student Branch award at the IEEE Oman Section Annual Meeting."
   }
 ]
-

@@ -61,5 +61,14 @@
     "thumbnail": "/images/events/authorship-symposium-2.jpg",
     "fullSize": "/images/events/authorship-symposium-2.jpg",
     "alt": "Presentation slide on Keyword selection"
+  },
+  {
+    "id": "branch-launch-ceremony-1",
+    "title": "IEEE BUC Launch Ceremony",
+    "category": "Events",
+    "type": "image",
+    "thumbnail": "/images/events/branch-launch-ceremony.png",
+    "fullSize": "/images/events/branch-launch-ceremony.png",
+    "alt": "IEEE BUC Student Branch Launch Ceremony"
   }
 ]
