@@ -25,9 +25,8 @@ export default function EventMedia({ images, videos, eventTitle }: EventMediaPro
             alt: `${eventTitle} gallery image ${index + 1}`,
         })),
         ...videos.map((url, index) => {
-            // For videos, we use a placeholder thumbnail or try to match if there's a specific naming convention
-            // Since we don't have separate thumbnails for event videos yet, we'll use a neutral background or first image as fallback
-            const thumb = images[0] || '/images/events/placeholder.jpg';
+            // Use the generated thumbnails (v1.png, v2.png, etc.) in the matching images folder
+            const thumb = url.replace('/videos/', '/images/').replace(/\.\w+$/, `.png`).replace(/(\d+)\.png$/, 'v$1.png');
             return {
                 type: 'video' as const,
                 thumbnail: thumb,
