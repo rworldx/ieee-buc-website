@@ -109,18 +109,19 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
           {event.videos && event.videos.length > 0 && (
             <div className="mt-12">
               <h2 className="text-3xl font-bold mb-6">Videos</h2>
-              <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {event.videos.map((video, index) => (
-                  <a
-                    key={index}
-                    href={video}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-ieee-blue hover:text-ieee-blue-light transition-colors"
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Watch Video {index + 1}
-                  </a>
+                  <div key={index} className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+                    <video
+                      controls
+                      playsInline
+                      className="w-full h-full"
+                      preload="metadata"
+                    >
+                      <source src={video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 ))}
               </div>
             </div>
