@@ -15,15 +15,8 @@ export default function EventMedia({ images, videos, eventTitle }: EventMediaPro
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Combine images and videos into a unified format for the lightbox
+    // Combine images and videos into a unified format for the lightbox, prioritizing videos
     const allMedia = [
-        ...images.map((url, index) => ({
-            type: 'image' as const,
-            thumbnail: url,
-            fullSize: url,
-            title: `${eventTitle} - Image ${index + 1}`,
-            alt: `${eventTitle} gallery image ${index + 1}`,
-        })),
         ...videos.map((url, index) => {
             // Use the generated thumbnails (v1.png, v2.png, etc.) in the matching images folder
             const thumb = url.replace('/videos/', '/images/').replace(/\.\w+$/, `.png`).replace(/(\d+)\.png$/, 'v$1.png');
@@ -35,6 +28,13 @@ export default function EventMedia({ images, videos, eventTitle }: EventMediaPro
                 alt: `${eventTitle} video ${index + 1}`,
             };
         }),
+        ...images.map((url, index) => ({
+            type: 'image' as const,
+            thumbnail: url,
+            fullSize: url,
+            title: `${eventTitle} - Image ${index + 1}`,
+            alt: `${eventTitle} gallery image ${index + 1}`,
+        })),
     ];
 
     const openLightbox = (index: number) => {
