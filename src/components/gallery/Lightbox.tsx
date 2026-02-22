@@ -9,7 +9,14 @@ interface LightboxProps {
   isOpen: boolean;
   onClose: () => void;
   currentIndex: number;
-  images: { fullSize?: string; thumbnail: string; title: string; alt: string }[];
+  items: {
+    type: 'image' | 'video';
+    fullSize?: string;
+    thumbnail: string;
+    videoUrl?: string;
+    title: string;
+    alt: string
+  }[];
   onPrevious: () => void;
   onNext: () => void;
 }
@@ -18,15 +25,21 @@ export default function Lightbox({
   isOpen,
   onClose,
   currentIndex,
-  images,
+  items,
   onPrevious,
   onNext,
 }: LightboxProps) {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft') onPrevious();
-      if (e.key === 'ArrowRight') onNext();
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        onPrevious();
+      }
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        onNext();
+      }
     };
 
     if (isOpen) {
@@ -68,15 +81,24 @@ export default function Lightbox({
               <X size={24} />
             </button>
 
-            {/* Previous Button */}
-            {images.length > 1 && (
-              <button
-                onClick={onPrevious}
-                className="absolute left-4 p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-                aria-label="Previous image"
-              >
-                <ChevronLeft size={32} />
-              </button>
+            {/* Navigation Buttons */}
+            {items.length > 1 && (
+              <>
+                <button
+                  onClick={onPrevious}
+                  className="absolute left-4 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-20"
+                  aria-label="Previous item"
+                >
+                  <ChevronLeft size={36} />
+                </button>
+                <button
+                  onClick={onNext}
+                  className="absolute right-4 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-20"
+                  aria-label="Next item"
+                >
+                  <ChevronRight size={36} />
+                </button>
+              </>
             )}
 
             {/* Image */}

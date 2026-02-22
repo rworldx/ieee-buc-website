@@ -37,12 +37,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
             key={item.id}
             className="group relative aspect-square bg-neutral-100 rounded-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300"
             onClick={() => {
-              if (item.type === 'image') {
-                const imageIndex = imageItems.findIndex((img) => img.id === item.id);
-                openLightbox(imageIndex);
-              } else if (item.videoUrl) {
-                window.open(item.videoUrl, '_blank');
-              }
+              openLightbox(items.indexOf(item));
             }}
           >
             <Image
@@ -77,7 +72,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
         currentIndex={currentIndex}
-        images={imageItems}
+        items={items}
         onPrevious={handlePrevious}
         onNext={handleNext}
       />
