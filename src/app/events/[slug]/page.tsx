@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Section from '@/components/layout/Section';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { getEventBySlug, getEvents } from '@/lib/content';
@@ -43,15 +44,15 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
       />
 
       {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-neutral-50 to-neutral-100 py-16">
-        <div className="max-w-4xl mx-auto">
+      <Section className="bg-gradient-to-br from-neutral-50 to-neutral-100 pt-16 pb-0">
+        <div className="max-w-4xl mx-auto px-4">
           <div className="inline-block bg-ieee-blue text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
             {event.type}
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-neutral-800">
             {event.title}
           </h1>
-          <div className="flex flex-wrap gap-6 text-lg">
+          <div className="flex flex-wrap gap-6 text-lg mb-8">
             <div className="flex items-center text-neutral-600">
               <Calendar size={20} className="mr-2" />
               <span>{formattedDate}</span>
@@ -60,6 +61,17 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               <MapPin size={20} className="mr-2" />
               <span>{event.location}</span>
             </div>
+          </div>
+
+          {/* Cover Image Box */}
+          <div className="relative w-full aspect-[21/9] rounded-t-2xl overflow-hidden shadow-2xl bg-neutral-200">
+            <Image
+              src={event.image}
+              alt={event.title}
+              fill
+              priority
+              className="object-cover"
+            />
           </div>
         </div>
       </Section>
