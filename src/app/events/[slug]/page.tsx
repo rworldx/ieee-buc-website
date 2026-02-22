@@ -3,6 +3,7 @@ import Section from '@/components/layout/Section';
 import { Calendar, MapPin, ExternalLink } from 'lucide-react';
 import { getEventBySlug, getEvents } from '@/lib/content';
 import { generateEventSchema } from '@/lib/schema';
+import EventMedia from '@/components/events/EventMedia';
 
 interface EventDetailPageProps {
   params: Promise<{
@@ -87,45 +88,12 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
             </div>
           )}
 
-          {/* Gallery Section */}
-          {event.gallery && event.gallery.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-3xl font-bold mb-6">Gallery</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {event.gallery.map((image, index) => (
-                  <div key={index} className="relative aspect-square bg-neutral-100 rounded-lg overflow-hidden">
-                    <img
-                      src={image}
-                      alt={`Gallery image ${index + 1}`}
-                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Videos Section */}
-          {event.videos && event.videos.length > 0 && (
-            <div className="mt-12">
-              <h2 className="text-3xl font-bold mb-6">Videos</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {event.videos.map((video, index) => (
-                  <div key={index} className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
-                    <video
-                      controls
-                      playsInline
-                      className="w-full h-full"
-                      preload="metadata"
-                    >
-                      <source src={video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {/* Event Media (Gallery & Videos) */}
+          <EventMedia
+            images={event.gallery || []}
+            videos={event.videos || []}
+            eventTitle={event.title}
+          />
         </div>
       </Section>
     </>
