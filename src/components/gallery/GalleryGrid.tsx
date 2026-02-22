@@ -14,7 +14,7 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const imageItems = items.filter((item) => item.type === 'image');
+
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -22,11 +22,11 @@ export default function GalleryGrid({ items }: GalleryGridProps) {
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : imageItems.length - 1));
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : items.length - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev < imageItems.length - 1 ? prev + 1 : 0));
+    setCurrentIndex((prev) => (prev < items.length - 1 ? prev + 1 : 0));
   };
 
   return (

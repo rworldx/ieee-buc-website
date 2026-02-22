@@ -53,9 +53,9 @@ export default function Lightbox({
     };
   }, [isOpen, onClose, onPrevious, onNext]);
 
-  if (!isOpen || !images[currentIndex]) return null;
+  if (!isOpen || !items[currentIndex]) return null;
 
-  const currentImage = images[currentIndex];
+  const currentItem = items[currentIndex];
 
   return (
     <AnimatePresence>
@@ -75,7 +75,7 @@ export default function Lightbox({
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-lg transition-colors z-[60]"
               aria-label="Close lightbox"
             >
               <X size={24} />
@@ -101,39 +101,44 @@ export default function Lightbox({
               </>
             )}
 
-            {/* Image */}
+            {/* Content Container */}
             <motion.div
               key={currentIndex}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              className="max-w-7xl max-h-[90vh] flex flex-col items-center"
+              className="max-w-7xl w-full flex flex-col items-center"
             >
-              <div className="relative bg-neutral-100 rounded-lg overflow-hidden max-h-[80vh] aspect-video w-[80vw]">
-                <Image
-                  src={currentImage.fullSize || currentImage.thumbnail}
-                  alt={currentImage.alt}
-                  fill
-                  className="object-contain"
-                />
+              <div className="relative bg-neutral-900 rounded-lg overflow-hidden max-h-[80vh] aspect-video w-[85vw] flex items-center justify-center">
+                {currentItem.type === 'video' ? (
+                  <video
+                    key={currentItem.videoUrl}
+                    controls
+                    autoPlay
+                    playsInline
+                    className="max-w-full max-h-full"
+                  >
+                    <source src={currentItem.videoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <Image
+                    src={currentItem.fullSize || currentItem.thumbnail}
+                    alt={currentItem.alt}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                )}
               </div>
-              <p className="text-white mt-4 text-center">{currentImage.title}</p>
-              <p className="text-white/60 text-sm">
-                {currentIndex + 1} / {images.length}
-              </p>
+              <div className="mt-4 text-center">
+                <p className="text-white text-lg font-medium">{currentItem.title}</p>
+                <p className="text-white/60">
+                  {currentIndex + 1} / {items.length}
+                </p>
+              </div>
             </motion.div>
-
-            {/* Next Button */}
-            {images.length > 1 && (
-              <button
-                onClick={onNext}
-                className="absolute right-4 p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-                aria-label="Next image"
-              >
-                <ChevronRight size={32} />
-              </button>
-            )}
           </div>
         </>
       )}
