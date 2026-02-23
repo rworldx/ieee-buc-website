@@ -85,8 +85,8 @@
     "title": "Launch Ceremony - Image 3",
     "category": "Events",
     "type": "image",
-    "thumbnail": "/images/events/branch-launch/IMG_3029.heic",
-    "fullSize": "/images/events/branch-launch/IMG_3029.heic",
+    "thumbnail": "/images/events/branch-launch/IMG_3029.jpg",
+    "fullSize": "/images/events/branch-launch/IMG_3029.jpg",
     "alt": "Launch Ceremony Image 3"
   },
   {
@@ -94,8 +94,8 @@
     "title": "Launch Ceremony - Image 4",
     "category": "Events",
     "type": "image",
-    "thumbnail": "/images/events/branch-launch/IMG_3143.HEIC",
-    "fullSize": "/images/events/branch-launch/IMG_3143.HEIC",
+    "thumbnail": "/images/events/branch-launch/IMG_3143.jpg",
+    "fullSize": "/images/events/branch-launch/IMG_3143.jpg",
     "alt": "Launch Ceremony Image 4"
   },
   {
@@ -103,8 +103,8 @@
     "title": "Launch Ceremony - Image 5",
     "category": "Events",
     "type": "image",
-    "thumbnail": "/images/events/branch-launch/IMG_3144.HEIC",
-    "fullSize": "/images/events/branch-launch/IMG_3144.HEIC",
+    "thumbnail": "/images/events/branch-launch/IMG_3144.jpg",
+    "fullSize": "/images/events/branch-launch/IMG_3144.jpg",
     "alt": "Launch Ceremony Image 5"
   },
   {
@@ -112,8 +112,8 @@
     "title": "Launch Ceremony - Image 6",
     "category": "Events",
     "type": "image",
-    "thumbnail": "/images/events/branch-launch/IMG_3145.HEIC",
-    "fullSize": "/images/events/branch-launch/IMG_3145.HEIC",
+    "thumbnail": "/images/events/branch-launch/IMG_3145.jpg",
+    "fullSize": "/images/events/branch-launch/IMG_3145.jpg",
     "alt": "Launch Ceremony Image 6"
   },
   {
@@ -139,7 +139,7 @@
     "title": "Launch Ceremony - Video 3",
     "category": "Events",
     "type": "video",
-    "thumbnail": "/images/events/branch-launch/IMG_3029.heic",
+    "thumbnail": "/images/events/branch-launch/IMG_3029.jpg",
     "videoUrl": "/videos/events/branch-launch/IMG_3027.MOV",
     "alt": "Launch Ceremony Video 3"
   }
