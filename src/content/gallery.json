@@ -115,5 +115,23 @@
     "thumbnail": "/images/events/branch-launch/v3.png",
     "videoUrl": "/videos/events/branch-launch/3.mp4",
     "alt": "Launch Ceremony Highlights Video 3"
+  },
+  {
+    "id": "branch-launch-ceremony-4",
+    "title": "IEEE BUC Launch Ceremony - Group Photo",
+    "category": "Events",
+    "type": "image",
+    "thumbnail": "/images/events/branch-launch/branch-launch-image-4.jpg",
+    "fullSize": "/images/events/branch-launch/branch-launch-image-4.jpg",
+    "alt": "IEEE BUC Student Branch Launch Ceremony Group Photo"
+  },
+  {
+    "id": "branch-launch-ceremony-5",
+    "title": "IEEE BUC Launch Ceremony - Main Event",
+    "category": "Events",
+    "type": "image",
+    "thumbnail": "/images/events/branch-launch/branch-launch-image-5.jpg",
+    "fullSize": "/images/events/branch-launch/branch-launch-image-5.jpg",
+    "alt": "IEEE BUC Student Branch Launch Ceremony Main Event"
   }
 ]
