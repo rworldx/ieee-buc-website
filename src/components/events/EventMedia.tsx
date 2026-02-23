@@ -18,8 +18,8 @@ export default function EventMedia({ images, videos, eventTitle }: EventMediaPro
     // Combine images and videos into a unified format for the lightbox, prioritizing videos
     const allMedia = [
         ...videos.map((url, index) => {
-            // Use the generated thumbnails (v1.png, v2.png, etc.) in the matching images folder
-            const thumb = url.replace('/videos/', '/images/').replace(/\.\w+$/, `.png`).replace(/(\d+)\.png$/, 'v$1.png');
+            // Use the generated thumbnails (v1.png, v2.png, etc.) based on index
+            const thumb = url.replace('/videos/', '/images/').split('/').slice(0, -1).join('/') + `/v${index + 1}.png`;
             return {
                 type: 'video' as const,
                 thumbnail: thumb,
