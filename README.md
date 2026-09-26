@@ -1,13 +1,11 @@
 # IEEE Student Branch - Buraimi University College Website
 
-Official website for the IEEE Student Branch at Buraimi University College, Oman. Built with Next.js 14+, TypeScript, and Tailwind CSS.
+Official website for the IEEE Student Branch at Buraimi University College, Oman. Built with Next.js 16, TypeScript, and Tailwind CSS.
 
 ## Features
 
 - 🎨 Modern, minimalist design with IEEE branding
 - 📱 Fully responsive across all devices
-- ⚡ Optimized for performance (Lighthouse 90+ score)
-- ♿ WCAG 2.1 AA accessible
 - 🔍 SEO-ready with structured data
 - 📝 Easy content management via JSON files
 - 🖼️ Image gallery with lightbox
@@ -16,7 +14,7 @@ Official website for the IEEE Student Branch at Buraimi University College, Oman
 
 ## Tech Stack
 
-- **Framework:** Next.js 14+ (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **Icons:** Lucide React
@@ -321,8 +319,8 @@ For technical issues or questions:
 
 ## License
 
-© 2024 IEEE Student Branch - Buraimi University College. All rights reserved.
+© 2025 IEEE Student Branch - Buraimi University College. All rights reserved.
 
 ## Credits
 
-Designed and developed by the IEEE BUC Webmaster Team.
+Designed and developed by Rashid Al Ghafri, Webmaster, IEEE BUC Student Branch.
