@@ -34,13 +34,31 @@ export default function Navbar() {
     for (const link of links) router.prefetch(link.href);
   }, [links, router]);
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-surface">
+    <header className="site-header sticky top-0 z-40 border-b border-line">
       <nav
         aria-label={t.nav}
         className="container-custom flex h-20 items-center justify-between gap-4"
       >
         <Link
-          href={localHref("/", locale)}
+          href={`${localHref("/", locale)}#top`}
+          onClick={(event) => {
+            if (
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.altKey
+            )
+              return;
+            if (pathname === localHref("/", locale)) {
+              event.preventDefault();
+              window.scrollTo({
+                top: 0,
+                behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+                  ? "instant"
+                  : "smooth",
+              });
+            }
+          }}
           aria-label={`${t.branch} · ${t.home}`}
           className="flex shrink-0 items-center gap-3"
         >

@@ -19,6 +19,31 @@ export default function MobileMenu({
   const ref = useRef<HTMLDialogElement>(null);
   const pathname = usePathname();
   const { locale, t } = useSite();
+  const closing = useRef(false);
+  function dismiss() {
+    const dialog = ref.current;
+    if (!dialog || closing.current) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      onClose();
+      return;
+    }
+    closing.current = true;
+    const animation = dialog.animate(
+      [
+        { opacity: 1, transform: "translateX(0)" },
+        {
+          opacity: 0,
+          transform: `translateX(${locale === "ar" ? "-" : ""}100%)`,
+        },
+      ],
+      { duration: 200, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" },
+    );
+    animation.onfinish = () => {
+      animation.cancel();
+      closing.current = false;
+      onClose();
+    };
+  }
   useEffect(() => {
     const dialog = ref.current;
     if (!isOpen || !dialog) return;
@@ -43,7 +68,7 @@ export default function MobileMenu({
       className="mobile-dialog"
       onCancel={(event) => {
         event.preventDefault();
-        onClose();
+        dismiss();
       }}
       onClose={onClose}
       onKeyDown={containDialogTab}
@@ -53,7 +78,7 @@ export default function MobileMenu({
           e.target === e.currentTarget &&
           (e.clientX < r.left || e.clientX > r.right)
         )
-          onClose();
+          dismiss();
       }}
     >
       <div className="flex items-center justify-between border-b border-line pb-5">
@@ -62,7 +87,7 @@ export default function MobileMenu({
         </p>
         <button
           type="button"
-          onClick={onClose}
+          onClick={dismiss}
           aria-label={t.menuClose}
           className="icon-button"
         >

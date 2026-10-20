@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SiteProvider from "@/components/providers/SiteProvider";
+import ScrollReveals from "@/components/layout/ScrollReveals";
 import { getLocale } from "@/lib/locale";
 import { messages } from "@/lib/i18n";
 const inter = Inter({
@@ -51,12 +52,13 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
       </head>
-      <body>
+      <body id="top">
         <SiteProvider locale={locale}>
           <a className="skip-link" href="#main-content">
             {messages[locale].skip}
           </a>
           <Navbar />
+          <ScrollReveals />
           <main id="main-content" tabIndex={-1}>
             {children}
           </main>
