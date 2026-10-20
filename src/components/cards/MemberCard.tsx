@@ -40,12 +40,6 @@ export default function MemberCard({
       : member.gender === "male"
         ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-200"
         : "bg-surface-soft text-link";
-  const badgeColor =
-    member.gender === "female"
-      ? "text-pink-700 dark:text-pink-200"
-      : member.gender === "male"
-        ? "text-blue-700 dark:text-blue-200"
-        : "text-link";
   return (
     <article
       className={`flex min-w-0 gap-5 rounded-2xl border border-line bg-surface ${isExecutive ? "flex-col p-6" : "items-center p-4"}`}
@@ -69,14 +63,14 @@ export default function MemberCard({
           />
         )}
       </div>
-      <div className="min-w-0 flex-1">
+      <div className="flex min-w-0 flex-1 flex-col">
         <h3
           className={`${isExecutive ? "text-xl" : "text-base"} font-semibold leading-snug`}
         >
           <bdi>{member.name}</bdi>
         </h3>
         <div className="mt-2 flex min-w-0 items-center gap-2 text-sm text-link">
-          {isExecutive && <RoleBadge role={role} className={badgeColor} />}
+          {isExecutive && <RoleBadge role={role} />}
           <p>{locale === "ar" ? roles[role] || role : role}</p>
         </div>
         {isExecutive && "bio" in member && member.bio && (
@@ -84,7 +78,7 @@ export default function MemberCard({
             {locale === "ar" ? arabicBios[role] || member.bio : member.bio}
           </p>
         )}
-        <div className="mt-4 flex gap-2">
+        <div className="mt-auto flex gap-2 pt-4">
           {member.email && (
             <a
               href={`mailto:${member.email}`}
