@@ -37,12 +37,12 @@ export default async function AboutPage() {
         <figure className="mb-14">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl md:aspect-[21/9]">
             <Image
-              src="/images/events/branch-launch/IMG_3143.jpg"
+              src="/images/events/branch-launch/IMG_3145.jpg"
               alt={t.heroCaption}
               fill
               priority
               sizes="(max-width:768px) 90vw, 1184px"
-              className="object-cover"
+              className="object-cover object-center"
             />
           </div>
           <figcaption className="mt-4 text-sm text-muted">

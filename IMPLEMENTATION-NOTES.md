@@ -44,3 +44,13 @@ University-emblem correction: the BUC crest is excluded from the IEEE dark-mode 
 Book detail correction: added a white backing inside the university crest so its transparent book detail remains white against dark surfaces. Exterior background stays transparent. Production build passed and dark-header rendering was checked.
 
 Final completion pass: see WEBSITE-REVIEW.md for the current outcome and limits. Executive role symbols enlarged to 23px, Chair uses BadgeCheck and Vice Chair uses Handshake, with person silhouettes and existing gender colors preserved. Footer now shares BrandLogo. Arabic biographies improved, event headings fixed, and language links preserve filters/fragments. Final lint, six regression tests and production Webpack build pass; the preview integration script checks all 22 bilingual routes and security/metadata behavior. Latest production audit reports zero vulnerabilities. Latest screenshots: review/final-home.png and review/final-executive-icons.png.
+
+# Navigation scroll correction
+
+- Removed global smooth scrolling because it animated Next.js route resets from the previous page position, making a newly opened page appear partway down before reaching the top.
+- Standard route links now open at the top immediately. Hash links such as `#join` still target the requested section and retain the sticky-header offset.
+
+# About image composition
+
+- Replaced the portrait event photo forced into a wide crop with the landscape panel photo from the same branch launch.
+- The event screen and speakers now remain centered in the wide desktop frame, while the original landscape composition fits the mobile 4:3 frame.

@@ -19,6 +19,8 @@ The badges support the written labels without changing the person artwork, and r
 - Accurate email-draft contact form, validation and direct-email fallback.
 - Localized metadata and structured data, sitemap, robots, content validation, CSP nonces and security headers.
 - Improved Arabic executive biographies and event-list heading hierarchy.
+- Page navigation now opens each route at the top immediately, while in-page links retain their sticky-header offset.
+- The About page uses a centered landscape launch photo that keeps the event screen and speakers in frame across desktop and mobile layouts.
 
 ## Verification evidence
 
@@ -27,6 +29,7 @@ The badges support the written labels without changing the person artwork, and r
 - Read-only preview integration test passed for 22 bilingual pages: locale, security headers, unique script nonces, canonical/alternate metadata, unknown routes, robots and sitemap. Run `npm run test:preview` with the preview on port 3101; override `PREVIEW_URL` if needed.
 - Latest browser matrix: all 22 routes at 320, 768 and 1440px (66 checks); no horizontal overflow, missing image alt attributes, empty link destinations or extra/missing H1. Earlier checks additionally covered 390 and 1024px.
 - Verified light/dark appearance, Arabic RTL team layout, correct icon mappings, preserved event filter during language navigation, and sampled browser console without errors. Earlier interaction checks covered Escape and Tab focus containment, gallery navigation, MP4 readiness and form validation.
+- Reproduced the former route-scroll issue from a 2,292px page position and verified the destination route settles at 0px. The updated About image was visually reviewed at desktop and 390×844 layouts with no horizontal overflow.
 - Refreshed production npm audit: zero reported vulnerabilities. The previous full audit retains seven development-tool findings; no breaking forced downgrade was applied.
 - Original logo integrity tests pass. No production publication, external message, or event registration was performed.
 
@@ -42,5 +45,7 @@ Physical iPhone/iPad/Android devices and non-Chrome browsers still need real-dev
 
 - `review/final-home.png`
 - `review/final-executive-icons.png`
+- `review/final-about-centered-desktop.png`
+- `review/final-about-centered-mobile.png`
 - `IEEE-WEBSITE-AUDIT.md` — original baseline audit, not current defects.
 - `IMPLEMENTATION-NOTES.md` — implementation history and verification details.
