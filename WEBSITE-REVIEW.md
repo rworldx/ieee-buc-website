@@ -21,6 +21,7 @@ The badges support the written labels without changing the person artwork, and r
 - Improved Arabic executive biographies and event-list heading hierarchy.
 - Page navigation now opens each route at the top immediately, while in-page links retain their sticky-header offset.
 - The About page uses a centered landscape launch photo that keeps the event screen and speakers in frame across desktop and mobile layouts.
+- Community and upcoming-event totals use a compact `+` marker to show that the published website count is a known minimum; the archive count remains exact.
 
 ## Verification evidence
 
@@ -47,5 +48,6 @@ Physical iPhone/iPad/Android devices and non-Chrome browsers still need real-dev
 - `review/final-executive-icons.png`
 - `review/final-about-centered-desktop.png`
 - `review/final-about-centered-mobile.png`
+- `review/final-home-statistics.png`
 - `IEEE-WEBSITE-AUDIT.md` — original baseline audit, not current defects.
 - `IMPLEMENTATION-NOTES.md` — implementation history and verification details.
