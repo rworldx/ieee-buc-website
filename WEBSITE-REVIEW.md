@@ -4,9 +4,9 @@ The redesigned website is complete as a local, reviewable implementation. Previe
 
 ## Final icon decision
 
-Executive avatars use the same clean Lucide UserRound silhouette as regular members. Each role has a compact IEEE-blue badge directly beside its title: Counselor graduation cap, Chair gavel, Vice Chair team, Secretary clipboard, Webmaster code, and Treasurer coins. The existing pink/female and blue/male avatar colors are preserved in both themes.
+Executive avatars use the same clean Lucide UserRound silhouette as regular members. Beside each role name is a small circular badge using the supplied reference icon set: Counselor graduation cap, Chair verified-leadership mark, Vice Chair handshake, Secretary writing clipboard, Webmaster code, and Treasurer wallet. The badge inherits the existing pink/female or blue/male color in both themes.
 
-The badges support the written labels without changing the person artwork, and remain decorative to assistive technology because the adjacent text names every role. Edit `src/components/team/RoleBadge.tsx` to customize them. Latest screenshots: `review/final-role-badges-dark.png` and `review/final-role-badges-ar-dark.png`. Lint, TypeScript and production build passed after this change; light, dark, English, Arabic RTL and 390px reflow were reviewed.
+The badges support the written labels without changing the person artwork, and remain decorative to assistive technology because every card names its role in text. Edit `src/components/team/RoleBadge.tsx` to customize them. Latest screenshots: `review/final-circular-role-badges-light.png`, `review/final-circular-role-badges-dark.png`, and `review/final-circular-role-badges-ar-dark.png`. Lint, TypeScript and production build passed after this change; light, dark, English, Arabic RTL and 390px reflow were reviewed.
 
 ## Completed
 
