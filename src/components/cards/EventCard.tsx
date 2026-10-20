@@ -16,7 +16,7 @@ export default function EventCard({
   const t = messages[locale];
   const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-lg">
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-card transition-shadow hover:shadow-lg">
       <Link
         href={localHref(`/events/${event.slug}`, locale)}
         aria-label={event.title}

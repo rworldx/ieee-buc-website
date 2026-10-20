@@ -42,7 +42,7 @@ export default function MemberCard({
         : "bg-surface-soft text-link";
   return (
     <article
-      className={`flex min-w-0 gap-5 rounded-2xl border border-line bg-surface ${isExecutive ? "flex-col p-6" : "items-center p-4"}`}
+      className={`flex min-w-0 gap-5 rounded-2xl border border-line bg-card ${isExecutive ? "flex-col p-6" : "items-center p-4"}`}
     >
       <div
         className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium ${avatarColors} ${isExecutive ? "size-20 text-xl" : "size-12 text-sm"}`}

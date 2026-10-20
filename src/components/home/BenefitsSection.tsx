@@ -32,6 +32,7 @@ export default function BenefitsSection({
             { icon: Lightbulb, title: t.contribute, text: t.contributeText },
           ].map(({ icon: Icon, title, text }) => (
             <div
+              data-reveal=""
               key={title}
               className="flex gap-5 border-b border-line py-6 first:pt-0 last:border-0"
             >

@@ -69,7 +69,7 @@ export default function Hero({ locale = "en" }: { locale?: Locale }) {
               priority
             />
           </div>
-          <figcaption className="relative -mt-16 ms-6 rounded-2xl border border-line bg-surface p-5 shadow-sm sm:ms-12">
+          <figcaption className="relative -mt-16 ms-6 rounded-2xl border border-line bg-card p-5 shadow-sm sm:ms-12">
             <p className="text-lg font-semibold tracking-tight">
               {t.heroCaption}
             </p>

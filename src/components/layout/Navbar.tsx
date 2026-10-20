@@ -34,10 +34,10 @@ export default function Navbar() {
     for (const link of links) router.prefetch(link.href);
   }, [links, router]);
   return (
-    <header className="site-header sticky top-0 z-40 border-b border-line">
+    <header className="site-header sticky top-3 z-40 mx-3 mt-3 rounded-2xl border border-line sm:top-4 sm:mx-6 sm:mt-4 sm:rounded-3xl">
       <nav
         aria-label={t.nav}
-        className="container-custom flex h-20 items-center justify-between gap-4"
+        className="container-custom flex h-20 items-center justify-between gap-2"
       >
         <Link
           href={`${localHref("/", locale)}#top`}
