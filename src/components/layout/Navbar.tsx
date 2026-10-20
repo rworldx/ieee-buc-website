@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,6 +13,21 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    let floating = false;
+    const syncHeader = () => {
+      // Hysteresis keeps the header stable near the transition boundary.
+      const next = window.scrollY > (floating ? 24 : 64);
+      if (next !== floating) {
+        floating = next;
+        headerRef.current?.setAttribute("data-floating", String(next));
+      }
+    };
+    syncHeader();
+    window.addEventListener("scroll", syncHeader, { passive: true });
+    return () => window.removeEventListener("scroll", syncHeader);
+  }, []);
   const links = useMemo(
     () =>
       [
@@ -34,7 +49,7 @@ export default function Navbar() {
     for (const link of links) router.prefetch(link.href);
   }, [links, router]);
   return (
-    <header className="site-header sticky top-3 z-40 mx-3 mt-3 rounded-2xl border border-line sm:top-4 sm:mx-6 sm:mt-4 sm:rounded-3xl">
+    <header ref={headerRef} className="site-header sticky top-0 z-40">
       <nav
         aria-label={t.nav}
         className="container-custom flex h-20 items-center justify-between gap-2"
