@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import BrandLogo from "./BrandLogo";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useSite } from "../providers/SiteProvider";
 import { localHref } from "@/lib/i18n";
@@ -11,15 +11,28 @@ import Preferences from "./Preferences";
 export default function Navbar() {
   const { locale, t } = useSite();
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const links = [
-    { href: "/", label: t.home },
-    { href: "/about", label: t.about },
-    { href: "/events", label: t.events },
-    { href: "/gallery", label: t.gallery },
-    { href: "/team", label: t.team },
-    { href: "/contact", label: t.contact },
-  ].map((link) => ({ ...link, href: localHref(link.href, locale) }));
+  const links = useMemo(
+    () =>
+      [
+        { href: "/", label: t.home },
+        { href: "/about", label: t.about },
+        { href: "/events", label: t.events },
+        { href: "/gallery", label: t.gallery },
+        { href: "/team", label: t.team },
+        { href: "/contact", label: t.contact },
+      ].map((link) => ({ ...link, href: localHref(link.href, locale) })),
+    [locale, t],
+  );
+
+  // Desktop links are visible and Next can prefetch them automatically. The
+  // mobile links live in a closed dialog, so they never enter the viewport.
+  // Warm the same routes after hydration so a phone tap does not wait for the
+  // route payload to begin downloading.
+  useEffect(() => {
+    for (const link of links) router.prefetch(link.href);
+  }, [links, router]);
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-surface">
       <nav

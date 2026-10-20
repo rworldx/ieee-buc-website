@@ -23,13 +23,16 @@ export default function MobileMenu({
     const dialog = ref.current;
     if (!isOpen || !dialog) return;
     const previous = document.activeElement as HTMLElement | null;
-    const overflow = document.body.style.overflow;
+    const rootOverflow = document.documentElement.style.overflow;
+    const bodyOverflow = document.body.style.overflow;
     dialog.showModal();
+    document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     return () => {
-      dialog.close();
-      document.body.style.overflow = overflow;
-      previous?.focus();
+      if (dialog.open) dialog.close();
+      document.documentElement.style.overflow = rootOverflow;
+      document.body.style.overflow = bodyOverflow;
+      previous?.focus({ preventScroll: true });
     };
   }, [isOpen]);
   return (
@@ -38,7 +41,11 @@ export default function MobileMenu({
       id="mobile-navigation"
       aria-labelledby="menu-title"
       className="mobile-dialog"
-      onCancel={onClose}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClose={onClose}
       onKeyDown={containDialogTab}
       onClick={(e) => {
         const r = e.currentTarget.getBoundingClientRect();

@@ -135,10 +135,16 @@
     @apply fixed start-4 top-3 z-[100] -translate-y-24 rounded-lg bg-ieee-blue px-5 py-3 font-semibold text-white focus:translate-y-0;
   }
   .mobile-dialog {
-    @apply fixed inset-y-0 start-auto end-0 m-0 h-dvh max-h-none w-[min(380px,100vw)] max-w-none border-0 bg-surface p-6 text-ink;
+    @apply fixed inset-y-0 start-auto end-0 m-0 h-dvh max-h-none w-[min(380px,100vw)] max-w-none overflow-y-auto overscroll-contain border-0 bg-surface p-6 text-ink;
+  }
+  .mobile-dialog[open] {
+    animation: mobile-dialog-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .mobile-dialog::backdrop {
     background: rgb(44 62 80 / 60%);
+  }
+  .mobile-dialog[open]::backdrop {
+    animation: mobile-backdrop-enter 180ms ease-out both;
   }
   .lightbox-dialog {
     @apply fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none border-0 bg-neutral-800 p-4 text-white sm:p-6;
@@ -183,5 +189,37 @@
   filter: none;
 }
 [data-theme="dark"] .brand-logo-themed {
-  filter: grayscale(1) brightness(2.8);
+  filter: grayscale(1) brightness(4) contrast(1.1);
+}
+
+@keyframes mobile-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes mobile-backdrop-enter {
+  from {
+    background: rgb(44 62 80 / 0%);
+  }
+  to {
+    background: rgb(44 62 80 / 60%);
+  }
+}
+[dir="rtl"] .mobile-dialog[open] {
+  animation-name: mobile-dialog-enter-rtl;
+}
+@keyframes mobile-dialog-enter-rtl {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
