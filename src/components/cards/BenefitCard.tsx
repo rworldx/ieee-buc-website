@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from "lucide-react";
 
 interface BenefitCardProps {
   icon: LucideIcon;
@@ -6,7 +6,11 @@ interface BenefitCardProps {
   description: string;
 }
 
-export default function BenefitCard({ icon: Icon, title, description }: BenefitCardProps) {
+export default function BenefitCard({
+  icon: Icon,
+  title,
+  description,
+}: BenefitCardProps) {
   return (
     <div className="bg-white rounded-[12px] p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <div className="w-12 h-12 bg-ieee-blue/10 rounded-lg flex items-center justify-center mb-4">
@@ -17,4 +21,3 @@ export default function BenefitCard({ icon: Icon, title, description }: BenefitC
     </div>
   );
 }
-

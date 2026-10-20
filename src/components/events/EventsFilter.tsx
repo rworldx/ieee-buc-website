@@ -1,78 +1,104 @@
-'use client';
-
-import { useState } from 'react';
-import Section from '../layout/Section';
-import EventCard from '../cards/EventCard';
-import { Event } from '@/lib/content';
-
-type FilterType = 'all' | 'upcoming' | 'past';
-
-interface EventsFilterProps {
-  events: Event[];
-}
-
-export default function EventsFilter({ events }: EventsFilterProps) {
-  const [filter, setFilter] = useState<FilterType>('all');
-
-  const upcomingEvents = events.filter((e) => e.status === 'upcoming');
-  const pastEvents = events.filter((e) => e.status === 'past');
-
-  const displayedEvents =
-    filter === 'upcoming' ? upcomingEvents :
-      filter === 'past' ? pastEvents :
-        events;
-
+"use client";
+import { useState } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { Search } from "lucide-react";
+import Section from "../layout/Section";
+import EventCard from "../cards/EventCard";
+import type { Event } from "@/lib/content";
+import { useSite } from "../providers/SiteProvider";
+export default function EventsFilter({ events }: { events: Event[] }) {
+  const { locale, t } = useSite();
+  const params = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+  const raw = params.get("status");
+  const filter = raw === "past" || raw === "upcoming" ? raw : "all";
+  function setFilter(value: string) {
+    const next = new URLSearchParams(params.toString());
+    if (value === "all") next.delete("status");
+    else next.set("status", value);
+    router.replace(`${pathname}${next.size ? `?${next}` : ""}`, {
+      scroll: false,
+    });
+  }
+  const results = events.filter(
+    (e) =>
+      (filter === "all" || e.status === filter) &&
+      `${e.title} ${e.description} ${e.type}`
+        .toLocaleLowerCase()
+        .includes(query.trim().toLocaleLowerCase()),
+  );
   return (
-    <Section className="bg-white">
-      {/* Filter Tabs */}
-      <div className="flex justify-center mb-12">
-        <div className="inline-flex bg-neutral-100 rounded-lg p-1">
-          <button
-            onClick={() => setFilter('all')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'all'
-              ? 'bg-white text-ieee-blue shadow-md'
-              : 'text-neutral-600 hover:text-neutral-800'
-              }`}
-          >
-            All Events
-          </button>
-
-          <button
-            onClick={() => setFilter('upcoming')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'upcoming'
-                ? 'bg-white text-ieee-blue shadow-md'
-                : 'text-neutral-600 hover:text-neutral-800'
-              }`}
-          >
-            Upcoming
-          </button>
-          <button
-            onClick={() => setFilter('past')}
-            className={`px-6 py-3 rounded-lg font-medium transition-colors ${filter === 'past'
-              ? 'bg-white text-ieee-blue shadow-md'
-              : 'text-neutral-600 hover:text-neutral-800'
-              }`}
-          >
-            Past Events
-          </button>
+    <Section>
+      <div className="mb-8 flex flex-col justify-between gap-6 md:flex-row md:items-center">
+        <div className="flex flex-wrap gap-2" aria-label={t.events}>
+          {[
+            ["all", t.allEvents],
+            ["upcoming", t.upcoming],
+            ["past", t.past],
+          ].map(([value, label]) => (
+            <button
+              type="button"
+              key={value}
+              onClick={() => setFilter(value)}
+              aria-pressed={filter === value}
+              className="filter-button"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="relative w-full md:max-w-xs">
+          <label htmlFor="event-search" className="sr-only">
+            {t.search}
+          </label>
+          <Search
+            size={18}
+            className="pointer-events-none absolute start-4 top-3.5 text-muted"
+            aria-hidden="true"
+          />
+          <input
+            id="event-search"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={t.searchPlaceholder}
+            className="form-field ps-11 text-sm"
+          />
         </div>
       </div>
-
-      {/* Events Grid */}
-      {displayedEvents.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
+      <p className="mb-6 text-sm text-muted" role="status">
+        {t.results}: {new Intl.NumberFormat(locale).format(results.length)}
+      </p>
+      {results.length ? (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {results.map((event) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              locale={locale}
+              headingLevel={2}
+            />
           ))}
         </div>
       ) : (
-        <div className="text-center py-12">
-          <p className="text-neutral-600 text-lg">
-            No events found in this category.
+        <div className="rounded-2xl border border-dashed border-line px-6 py-16 text-center">
+          <p className="text-xl font-semibold">{t.noEvents}</p>
+          <p className="mx-auto mt-3 max-w-md text-muted">
+            {filter === "upcoming" ? t.noUpcoming : t.searchPlaceholder}
           </p>
+          <button
+            className="button-secondary mt-6"
+            onClick={() => {
+              setQuery("");
+              setFilter("all");
+            }}
+          >
+            {t.clear}
+          </button>
         </div>
       )}
     </Section>
   );
 }
-

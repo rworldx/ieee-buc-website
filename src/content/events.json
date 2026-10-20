@@ -1,5 +1,37 @@
 [
   {
+    "id": "cybersecurity-trends-2026",
+    "slug": "cybersecurity-trends-2026",
+    "title": "Cybersecurity Trends 2026: Navigating the New Threat Landscape",
+    "date": "2026-10-27T18:00:00+04:00",
+    "endDate": "2026-10-27T19:30:00+04:00",
+    "type": "Webinar",
+    "status": "upcoming",
+    "description": "Join IEEE BUC for a virtual session on the changing cybersecurity landscape, featuring guest speakers from the University of Maryland Global Campus.",
+    "longDescription": "The IEEE Student Branch at Buraimi University College welcomes guest speakers from the University of Maryland Global Campus (UMGC) for a webinar on cybersecurity trends in 2026.\n\nJoin Dr. Mayyada Al Hammoshi and Dr. Chad Whistle for “Navigating the New Threat Landscape.” The session will take place online via Google Meet, from 6:00 to 7:30 PM Oman time.\n\nAdmission is free. Visit the official IEEE vTools event page for registration and attendance information.",
+    "location": "Online via Google Meet",
+    "online": true,
+    "admission": "Free admission",
+    "image": "/images/events/cybersecurity-trends-2026/poster.jpg",
+    "imageFit": "contain",
+    "registrationLink": "https://events.vtools.ieee.org/m/581451",
+    "calendarLink": "https://events.vtools.ieee.org/event/581451/ical",
+    "speakers": [
+      {
+        "name": "Dr. Mayyada Al Hammoshi",
+        "role": "Collegiate Faculty for Assessment and Evaluation in Cyber Technology",
+        "organization": "University of Maryland Global Campus"
+      },
+      {
+        "name": "Dr. Chad Whistle",
+        "role": "Assistant Dean for Portfolio Lifecycle & Student Success",
+        "organization": "University of Maryland Global Campus"
+      }
+    ],
+    "gallery": [],
+    "videos": []
+  },
+  {
     "id": "branch-launch-ceremony",
     "slug": "branch-launch-ceremony",
     "title": "IEEE Student Branch Launch Ceremony",
@@ -19,9 +51,9 @@
       "/images/events/branch-launch/IMG_3145.jpg"
     ],
     "videos": [
-      "/videos/events/branch-launch/IMG_3012.MOV",
-      "/videos/events/branch-launch/IMG_3026.MOV",
-      "/videos/events/branch-launch/IMG_3027.MOV"
+      "/videos/events/branch-launch/IMG_3012.mp4",
+      "/videos/events/branch-launch/IMG_3026.mp4",
+      "/videos/events/branch-launch/IMG_3027.mp4"
     ]
   },
   {
@@ -40,7 +72,9 @@
       "/images/events/ieeextreme-19-2.jpg",
       "/images/events/ieeextreme-19-3.jpg"
     ],
-    "videos": []
+    "videos": [],
+    "online": true,
+    "imageFit": "contain"
   },
   {
     "id": "counselors-workshop-2025",
@@ -57,7 +91,9 @@
       "/images/events/counselors-workshop-1.jpg",
       "/images/events/counselors-workshop-2.jpg"
     ],
-    "videos": []
+    "videos": [],
+    "online": true,
+    "imageFit": "contain"
   },
   {
     "id": "authorship-symposium-2025",
@@ -74,6 +110,8 @@
       "/images/events/authorship-symposium-1.jpg",
       "/images/events/authorship-symposium-2.jpg"
     ],
-    "videos": []
+    "videos": [],
+    "online": true,
+    "imageFit": "contain"
   }
 ]

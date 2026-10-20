@@ -1,41 +1,49 @@
-import { Metadata } from 'next';
-
+import type { Metadata } from "next";
+import { localHref, type Locale } from "./i18n";
+export function siteUrl() {
+  const configured = process.env.NEXT_PUBLIC_BASE_URL;
+  return configured ? new URL(configured).origin : "http://localhost:3100";
+}
 export function generateMetadata({
   title,
   description,
-  path = '',
-  image,
+  path = "",
+  image = "/images/logo.png",
+  locale = "en",
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
+  locale?: Locale;
 }): Metadata {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  const url = `${baseUrl}${path}`;
-  const ogImage = image || `${baseUrl}/images/og-image.jpg`;
-
+  const base = siteUrl();
+  const route = path || "/";
+  const absolute = new URL(image, base).href;
   return {
+    metadataBase: new URL(base),
     title,
     description,
+    alternates: {
+      canonical: localHref(route, locale),
+      languages: { en: route, ar: localHref(route, "ar"), "x-default": route },
+    },
     openGraph: {
       title,
       description,
-      url,
-      siteName: 'IEEE BUC Student Branch',
-      images: [{ url: ogImage }],
-      locale: 'en_US',
-      type: 'website',
+      url: localHref(route, locale),
+      siteName: "IEEE BUC Student Branch",
+      images: [{ url: absolute }],
+      locale: locale === "ar" ? "ar_OM" : "en_GB",
+      alternateLocale: locale === "ar" ? ["en_GB"] : ["ar_OM"],
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
-    },
-    alternates: {
-      canonical: url,
+      images: [absolute],
     },
   };
 }
-
+export { safeJsonLd } from "./safe-json";

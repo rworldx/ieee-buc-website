@@ -1,55 +1,40 @@
-'use client';
-
-import { useState } from 'react';
-import Section from '../layout/Section';
-import GalleryGrid from './GalleryGrid';
-import { GalleryItem } from '@/lib/content';
-
-interface GalleryWithFilterProps {
+"use client";
+import { useState } from "react";
+import Section from "../layout/Section";
+import GalleryGrid from "./GalleryGrid";
+import type { GalleryItem } from "@/lib/content";
+import { useSite } from "../providers/SiteProvider";
+import { categoryLabel } from "@/lib/i18n";
+export default function GalleryWithFilter({
+  items,
+  categories,
+}: {
   items: GalleryItem[];
   categories: string[];
-}
-
-export default function GalleryWithFilter({ items, categories }: GalleryWithFilterProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-
-  const filteredItems =
-    selectedCategory === 'All'
-      ? items
-      : items.filter((item) => item.category === selectedCategory);
-
+}) {
+  const { locale, t } = useSite();
+  const [selected, setSelected] = useState("All");
+  const filtered =
+    selected === "All" ? items : items.filter((i) => i.category === selected);
   return (
-    <Section className="bg-white">
-      {/* Category Filter */}
-      <div className="flex justify-center mb-12">
-        <div className="flex flex-wrap gap-3 justify-center">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
-                selectedCategory === category
-                  ? 'bg-ieee-blue text-white shadow-lg'
-                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+    <Section>
+      <div className="mb-6 flex flex-wrap gap-2" aria-label={t.gallery}>
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className="filter-button"
+            aria-pressed={selected === category}
+            onClick={() => setSelected(category)}
+          >
+            {category === "All" ? t.all : categoryLabel(category, locale)}
+          </button>
+        ))}
       </div>
-
-      {/* Gallery Grid */}
-      {filteredItems.length > 0 ? (
-        <GalleryGrid items={filteredItems} />
-      ) : (
-        <div className="text-center py-12">
-          <p className="text-neutral-600 text-lg">
-            No items found in this category.
-          </p>
-        </div>
-      )}
+      <p className="mb-8 text-sm text-muted" role="status">
+        {t.results}: {new Intl.NumberFormat(locale).format(filtered.length)}
+      </p>
+      <GalleryGrid key={selected} items={filtered} />
     </Section>
   );
 }
-

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface AboutCardProps {
   title: string;
@@ -17,12 +17,14 @@ export default function AboutCard({ title, children, icon }: AboutCardProps) {
       <h2 className="text-3xl md:text-4xl font-bold text-ieee-blue mb-6">
         {title}
       </h2>
-      <div className="prose prose-lg max-w-none
+      <div
+        className="prose prose-lg max-w-none
         prose-p:text-neutral-600 prose-p:leading-relaxed prose-p:mb-4 prose-p:text-lg
         prose-ul:my-6 prose-ul:space-y-3
         prose-li:text-neutral-600 prose-li:leading-relaxed prose-li:text-base
         prose-strong:text-neutral-800 prose-strong:font-semibold
-        prose-a:text-ieee-blue prose-a:no-underline hover:prose-a:underline">
+        prose-a:text-ieee-blue prose-a:no-underline hover:prose-a:underline"
+      >
         {children}
       </div>
     </div>

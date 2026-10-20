@@ -1,48 +1,97 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
-
-export default function Hero() {
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { messages, localHref, type Locale } from "@/lib/i18n";
+export default function Hero({ locale = "en" }: { locale?: Locale }) {
+  const t = messages[locale];
   return (
-    <section className="relative min-h-[60vh] py-20 flex items-center justify-center bg-gradient-to-br from-neutral-50 to-neutral-100">
-      <div className="container-custom text-center">
-        <div className="flex justify-center mb-2">
-          <Image
-            src="/images/logo.png"
-            alt="IEEE BUC Logo"
-            width={200}
-            height={200}
-            className="w-48 h-48 md:w-56 md:h-56 object-contain"
-            priority
-          />
+    <section className="overflow-hidden bg-surface">
+      <div className="container-custom grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20">
+        <div>
+          <p className="mb-7 flex items-center gap-3 text-sm font-medium text-link">
+            <span
+              aria-hidden="true"
+              className="h-2 w-2 rounded-full bg-ieee-blue"
+            />
+            {t.homeLabel}
+          </p>
+          <h1 className="text-[clamp(2.9rem,5.3vw,5.1rem)] font-semibold leading-[1.05]">
+            {t.heroA}
+            <span className="mt-2 block text-link">{t.heroB}</span>
+          </h1>
+          <p className="mt-7 max-w-lg text-lg leading-relaxed text-muted">
+            {t.heroDescription}
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <Link
+              href={localHref("/events", locale)}
+              className="button-primary"
+            >
+              {t.viewEvents}
+              <ArrowUpRight
+                size={18}
+                aria-hidden="true"
+                className="directional"
+              />
+            </Link>
+            <Link
+              href={localHref("/contact#join", locale)}
+              className="action-link"
+            >
+              {t.join}
+              <ArrowRight
+                size={17}
+                aria-hidden="true"
+                className="directional"
+              />
+            </Link>
+          </div>
+          <p className="mt-10 text-xs leading-relaxed text-muted">
+            {t.branch}
+            <br />
+            <span className="mt-1 inline-block font-medium text-ink">
+              {t.college} · {t.oman}
+            </span>
+          </p>
         </div>
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-neutral-800">
-          IEEE Student Branch
-          <span className="block text-ieee-blue mt-2">Buraimi University College</span>
-        </h1>
-
-        <p className="text-xl md:text-2xl text-neutral-600 mb-8 max-w-2xl mx-auto">
-          Advancing technology for humanity through innovation, collaboration, and professional development.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-ieee-blue text-white rounded-lg font-semibold hover:bg-ieee-blue-light transition-colors shadow-lg hover:shadow-xl"
-          >
-            Join Us
-            <ArrowRight size={20} className="ml-2" />
-          </Link>
-
-          <Link
-            href="/events"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-ieee-blue border-2 border-ieee-blue rounded-lg font-semibold hover:bg-ieee-blue hover:text-white transition-colors"
-          >
-            View Events
-          </Link>
-        </div>
+        <figure className="relative">
+          <div className="relative aspect-[5/4] overflow-hidden rounded-[24px] rounded-ss-[80px] bg-surface-soft md:aspect-[1/1.02]">
+            <Image
+              src="/images/events/branch-launch/b24343d1-ffd3-4a2b-b21a-141166706cb3.JPG"
+              alt={
+                locale === "ar"
+                  ? "المشاركون في حفل تدشين الفرع الطلابي في كلية البريمي الجامعية"
+                  : "Participants at the IEEE BUC Student Branch launch ceremony"
+              }
+              fill
+              sizes="(max-width: 1023px) 90vw, 550px"
+              className="object-cover"
+              priority
+            />
+          </div>
+          <figcaption className="relative -mt-16 ms-6 rounded-2xl border border-line bg-surface p-5 shadow-sm sm:ms-12">
+            <p className="text-lg font-semibold tracking-tight">
+              {t.heroCaption}
+            </p>
+            <div className="mt-2 flex items-center justify-between gap-3">
+              <p className="text-xs leading-relaxed text-muted">
+                {t.heroCaptionSmall}
+              </p>
+              <Link
+                href={localHref("/events/branch-launch-ceremony", locale)}
+                className="icon-button"
+                aria-label={t.details}
+              >
+                <ArrowUpRight
+                  size={19}
+                  className="directional"
+                  aria-hidden="true"
+                />
+              </Link>
+            </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
 }
-

@@ -1,56 +1,80 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Calendar, MapPin } from 'lucide-react';
-import { Event } from '@/lib/content';
-
-interface EventCardProps {
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import type { Event } from "@/lib/content";
+import { messages, localHref, categoryLabel, type Locale } from "@/lib/i18n";
+import { formatEventDate } from "@/lib/event-utils";
+export default function EventCard({
+  event,
+  locale = "en",
+  headingLevel = 3,
+}: {
   event: Event;
-}
-
-export default function EventCard({ event }: EventCardProps) {
-  const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-
+  locale?: Locale;
+  headingLevel?: 2 | 3;
+}) {
+  const t = messages[locale];
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
-    <Link
-      href={`/events/${event.slug}`}
-      className="group block bg-white rounded-[12px] overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-    >
-      <div className="relative h-48 w-full overflow-hidden bg-neutral-100">
+    <article className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-shadow hover:shadow-lg">
+      <Link
+        href={localHref(`/events/${event.slug}`, locale)}
+        aria-label={event.title}
+        className="relative block aspect-[16/10] overflow-hidden bg-surface-soft"
+      >
         <Image
           src={event.image}
-          alt={event.title}
+          alt=""
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(max-width:767px) 90vw, (max-width:1023px) 45vw, 370px"
+          className={
+            event.imageFit === "contain"
+              ? "object-contain p-3"
+              : "object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+          }
         />
-        <div className="absolute top-4 right-4 bg-ieee-blue text-white px-3 py-1 rounded-full text-sm font-medium z-10">
-          {event.type}
+        <span className="absolute start-4 top-4 rounded-full bg-surface px-3 py-1.5 text-xs font-semibold text-ink shadow-sm">
+          {categoryLabel(event.type, locale)}
+        </span>
+      </Link>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted">
+          <time dateTime={event.date}>
+            {formatEventDate(event.date, locale)}
+          </time>
+          {event.status === "upcoming" && (
+            <span className="text-link">· {t.upcoming}</span>
+          )}
         </div>
-      </div>
-      
-      <div className="p-6">
-        <h3 className="font-semibold text-xl mb-3 group-hover:text-ieee-blue transition-colors">
-          {event.title}
-        </h3>
-        
-        <div className="flex items-center text-sm text-neutral-600 mb-2">
-          <Calendar size={16} className="mr-2 flex-shrink-0" />
-          <span>{formattedDate}</span>
-        </div>
-        
-        <div className="flex items-center text-sm text-neutral-600 mb-4">
-          <MapPin size={16} className="mr-2 flex-shrink-0" />
-          <span>{event.location}</span>
-        </div>
-        
-        <p className="text-neutral-600 text-sm line-clamp-2">
+        <Heading className="text-xl font-semibold leading-snug">
+          <Link
+            href={localHref(`/events/${event.slug}`, locale)}
+            className="hover:text-link hover:underline"
+          >
+            {event.title}
+          </Link>
+        </Heading>
+        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
           {event.description}
         </p>
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-4">
+          <p className="flex items-center gap-2 text-xs text-muted">
+            <MapPin size={15} className="shrink-0" aria-hidden="true" />
+            {event.location}
+          </p>
+          <Link
+            href={localHref(`/events/${event.slug}`, locale)}
+            className="icon-button"
+            aria-label={`${t.details}: ${event.title}`}
+          >
+            <ArrowUpRight
+              size={18}
+              className="directional"
+              aria-hidden="true"
+            />
+          </Link>
+        </div>
       </div>
-    </Link>
+    </article>
   );
 }
-

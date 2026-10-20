@@ -1,7 +1,8 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 @theme inline {
-  /* IEEE Color Palette */
+  /* The original identity colors are unchanged. Dark mode remaps surfaces only. */
   --color-ieee-blue: #00629b;
   --color-ieee-blue-light: #0080c9;
   --color-neutral-50: #faf9f6;
@@ -9,47 +10,179 @@
   --color-neutral-200: #e5e5e5;
   --color-neutral-600: #6b7280;
   --color-neutral-800: #2c3e50;
-  
-  /* Border Radius */
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-link: var(--link);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --radius-card: 12px;
-  
-  /* Container Width */
-  --width-container: 1440px;
-  
-  /* Spacing */
-  --spacing-section: 120px;
-  
-  /* Typography */
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --width-container: 1280px;
 }
-
+:root {
+  --surface: #ffffff;
+  --surface-soft: #faf9f6;
+  --ink: #2c3e50;
+  --muted: #6b7280;
+  --line: #e5e5e5;
+  --link: #00629b;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --surface: #18232e;
+  --surface-soft: #2c3e50;
+  --ink: #faf9f6;
+  --muted: #c5cbd2;
+  --line: #4b5c6c;
+  --link: #a7dfff;
+  color-scheme: dark;
+}
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 104px;
   }
-  
   body {
-    @apply text-neutral-800 bg-white;
+    @apply bg-surface text-ink antialiased;
     font-family: var(--font-sans);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+  [dir="rtl"] body {
+    font-family: var(--font-arabic), system-ui, sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  h1,
+  h2 {
+    letter-spacing: -0.045em;
+    line-height: 1.1;
+  }
+  [dir="rtl"] h1,
+  [dir="rtl"] h2 {
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  a,
+  button,
+  input,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+  a,
+  button {
+    touch-action: manipulation;
+  }
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--link);
+    outline-offset: 4px;
+  }
+  ::selection {
+    background: #00629b;
+    color: white;
+  }
+  dialog {
+    color: inherit;
+  }
+}
+@layer components {
+  .container-custom {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+  }
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+  .section-title {
+    @apply text-3xl font-semibold sm:text-4xl lg:text-5xl;
+  }
+  .page-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     @apply font-semibold;
   }
-  
-  /* Accessible focus styles */
-  *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-ieee-blue ring-0;
+  .button-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ieee-blue px-6 py-3 text-sm font-semibold text-white transition-[box-shadow,transform] hover:shadow-lg active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .button-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-link hover:text-link;
+  }
+  .action-link {
+    @apply inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-link underline-offset-4 hover:underline;
+  }
+  .icon-button {
+    @apply inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line transition-colors hover:bg-surface-soft;
+  }
+  .filter-button {
+    @apply min-h-11 rounded-full px-5 py-2.5 text-sm font-medium transition-colors;
+  }
+  .filter-button[aria-pressed="true"] {
+    @apply bg-ieee-blue text-white;
+  }
+  .filter-button[aria-pressed="false"] {
+    @apply bg-surface-soft text-ink hover:underline;
+  }
+  .form-field {
+    @apply w-full rounded-xl border border-line bg-surface-soft px-4 py-3 text-base transition-colors focus:border-link focus:bg-surface;
+  }
+  .skip-link {
+    @apply fixed start-4 top-3 z-[100] -translate-y-24 rounded-lg bg-ieee-blue px-5 py-3 font-semibold text-white focus:translate-y-0;
+  }
+  .mobile-dialog {
+    @apply fixed inset-y-0 start-auto end-0 m-0 h-dvh max-h-none w-[min(380px,100vw)] max-w-none border-0 bg-surface p-6 text-ink;
+  }
+  .mobile-dialog::backdrop {
+    background: rgb(44 62 80 / 60%);
+  }
+  .lightbox-dialog {
+    @apply fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none border-0 bg-neutral-800 p-4 text-white sm:p-6;
+  }
+  .lightbox-dialog::backdrop {
+    background: #2c3e50;
+  }
+  .lightbox-dialog :focus-visible {
+    outline-color: white;
+  }
+  .blue-section {
+    @apply bg-ieee-blue text-white;
+  }
+  .blue-section :focus-visible {
+    outline-color: white;
+  }
+  .prose {
+    --tw-prose-body: var(--muted);
+    --tw-prose-headings: var(--ink);
+    --tw-prose-links: var(--link);
+    --tw-prose-bold: var(--ink);
+  }
+  .directional {
+    @apply rtl:-scale-x-100;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-@layer components {
-  .container-custom {
-    max-width: var(--width-container);
-    @apply mx-auto px-6 md:px-8 lg:px-12;
-  }
-  
-  .section-spacing {
-    @apply py-20 md:py-28 lg:py-[120px];
-  }
+/* Theme-specific presentation keeps the original transparent logo pixels intact. */
+.brand-logo-themed {
+  filter: none;
+}
+[data-theme="dark"] .brand-logo-themed {
+  filter: grayscale(1) brightness(2.8);
 }

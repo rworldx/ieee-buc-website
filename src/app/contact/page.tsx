@@ -1,104 +1,98 @@
-import Section from '@/components/layout/Section';
-import ContactForm from '@/components/forms/ContactForm';
-import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
-import { getSiteInfo } from '@/lib/content';
-
-export const metadata = {
-  title: 'Contact Us - IEEE BUC Student Branch',
-  description: 'Get in touch with the IEEE Student Branch at Buraimi University College. We would love to hear from you!',
-};
-
-export default function ContactPage() {
-  const siteInfo = getSiteInfo();
-
+import { ArrowUpRight, MapPin, Instagram } from "lucide-react";
+import PageHeader from "@/components/layout/PageHeader";
+import Section from "@/components/layout/Section";
+import ContactForm from "@/components/forms/ContactForm";
+import { getSiteInfo } from "@/lib/content";
+import { getLocale } from "@/lib/locale";
+import { messages } from "@/lib/i18n";
+import { generateMetadata as makeMetadata } from "@/lib/seo";
+export async function generateMetadata() {
+  const locale = await getLocale();
+  const t = messages[locale];
+  return makeMetadata({
+    title: `${t.contact} | IEEE BUC`,
+    description: t.contactDescription,
+    path: "/contact",
+    locale,
+  });
+}
+export default async function ContactPage() {
+  const locale = await getLocale();
+  const t = messages[locale];
+  const site = getSiteInfo();
   return (
     <>
-      {/* Page Header */}
-      <Section className="bg-gradient-to-br from-neutral-50 to-neutral-100 py-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-neutral-800">
-            Contact Us
-          </h1>
-          <p className="text-xl text-neutral-600">
-            Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
-          </p>
-        </div>
-      </Section>
-
-      {/* Contact Content */}
-      <Section className="bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-            <ContactForm recipientEmail={siteInfo.email} />
-          </div>
-
-          {/* Contact Information */}
-          <div>
-            <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-
-            <div className="space-y-6 mb-8">
-              {/* Email */}
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-ieee-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail size={20} className="text-ieee-blue" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="font-semibold text-lg mb-1">Email</h3>
-                  <a href={`mailto:${siteInfo.email}`} className="text-neutral-600 hover:text-ieee-blue transition-colors">
-                    {siteInfo.email}
-                  </a>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-ieee-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone size={20} className="text-ieee-blue" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                  <a href={`tel:${siteInfo.phone}`} className="text-neutral-600 hover:text-ieee-blue transition-colors">
-                    {siteInfo.phone}
-                  </a>
-                </div>
-              </div>
-
-              {/* Address */}
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-ieee-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin size={20} className="text-ieee-blue" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="font-semibold text-lg mb-1">Address</h3>
-                  <p className="text-neutral-600">{siteInfo.address}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Social Media */}
-            <div>
-              <h3 className="font-semibold text-lg mb-4">Follow Us</h3>
-              <div className="flex">
-                {siteInfo.socials.instagram && (
-                  <a
-                    href={siteInfo.socials.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-4 py-2 bg-neutral-100 hover:bg-ieee-blue text-neutral-600 hover:text-white rounded-lg transition-all duration-300 border border-neutral-200 hover:border-ieee-blue group"
-                    aria-label="Instagram"
+      <PageHeader
+        label={t.contact}
+        title={t.contactTitle}
+        description={t.contactDescription}
+      />
+      <Section>
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+          <div id="join" className="scroll-mt-28">
+            <h2 className="section-title">{t.joinTitle}</h2>
+            <p className="mt-6 leading-relaxed text-muted">{t.joinText}</p>
+            <ol className="mt-8 space-y-7">
+              {[
+                [t.joinStep1, t.joinStep1Text],
+                [t.joinStep2, t.joinStep2Text],
+                [t.joinStep3, t.joinStep3Text],
+              ].map(([title, text], i) => (
+                <li key={title} className="flex gap-4">
+                  <span
+                    className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-sm font-semibold text-link"
+                    aria-hidden="true"
                   >
-                    <Instagram size={20} className="group-hover:scale-110 transition-transform" />
-                    <span className="font-medium text-sm">@ieee.buc</span>
-                  </a>
-                )}
-              </div>
+                    {new Intl.NumberFormat(locale).format(i + 1)}
+                  </span>
+                  <div>
+                    <h3 className="font-semibold">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                      {text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <a
+              href="https://www.ieee.org/membership/join"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="action-link mt-5"
+            >
+              {t.ieee}
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <div className="mt-10 space-y-4 border-t border-line pt-6">
+              <p className="flex items-start gap-3 text-sm text-muted">
+                <MapPin
+                  size={19}
+                  className="shrink-0 text-link"
+                  aria-hidden="true"
+                />
+                <span>
+                  {t.college}
+                  <br />
+                  {t.oman}
+                </span>
+              </p>
+              <a
+                href={site.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="action-link"
+              >
+                <Instagram size={19} aria-hidden="true" />
+                <bdi>@ieee.buc</bdi>
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
             </div>
+          </div>
+          <div className="min-w-0 rounded-3xl border border-line p-6 sm:p-8">
+            <ContactForm recipientEmail={site.email} />
           </div>
         </div>
       </Section>
     </>
   );
 }
-

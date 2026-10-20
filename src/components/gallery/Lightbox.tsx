@@ -1,26 +1,25 @@
-'use client';
-
-import { useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-
-interface LightboxProps {
+"use client";
+import { useEffect, useRef } from "react";
+import { containDialogTab } from "@/lib/dialog-focus";
+import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { useSite } from "../providers/SiteProvider";
+export interface MediaItem {
+  type: "image" | "video";
+  fullSize?: string;
+  thumbnail: string;
+  videoUrl?: string;
+  title: string;
+  alt: string;
+}
+interface Props {
   isOpen: boolean;
   onClose: () => void;
   currentIndex: number;
-  items: {
-    type: 'image' | 'video';
-    fullSize?: string;
-    thumbnail: string;
-    videoUrl?: string;
-    title: string;
-    alt: string
-  }[];
+  items: MediaItem[];
   onPrevious: () => void;
   onNext: () => void;
 }
-
 export default function Lightbox({
   isOpen,
   onClose,
@@ -28,148 +27,139 @@ export default function Lightbox({
   items,
   onPrevious,
   onNext,
-}: LightboxProps) {
+}: Props) {
+  const ref = useRef<HTMLDialogElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const { t, locale } = useSite();
+  const current = items[currentIndex];
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        onPrevious();
-      }
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        onNext();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-
+    const dialog = ref.current;
+    if (!isOpen || !dialog) return;
+    const previous = document.activeElement as HTMLElement | null;
+    const overflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      dialog.close();
+      document.body.style.overflow = overflow;
+      previous?.focus();
     };
-  }, [isOpen, onClose, onPrevious, onNext]);
-
-  if (!isOpen || !items[currentIndex]) return null;
-
-  const currentItem = items[currentIndex];
-
+  }, [isOpen]);
+  useEffect(() => {
+    if (!isOpen) videoRef.current?.pause();
+  }, [isOpen]);
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+    <dialog
+      ref={ref}
+      className="lightbox-dialog"
+      aria-labelledby="media-title"
+      onCancel={onClose}
+      onKeyDown={(e) => {
+        containDialogTab(e);
+        if (e.target instanceof HTMLVideoElement) return;
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          if (locale === "ar") onNext();
+          else onPrevious();
+        }
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          if (locale === "ar") onPrevious();
+          else onNext();
+        }
+      }}
+    >
+      <div className="mx-auto flex h-full max-w-6xl flex-col gap-4">
+        <div className="flex shrink-0 items-center justify-between gap-3">
+          <p className="text-sm text-white/80">{t.mediaViewer}</p>
+          <button
+            type="button"
             onClick={onClose}
-            className="fixed inset-0 bg-black/95 z-50"
-          />
-
-          {/* Lightbox Content */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-lg transition-colors z-[60] pointer-events-auto"
-              aria-label="Close lightbox"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Navigation Buttons - Tablet & Desktop */}
-            {items.length > 1 && (
-              <>
-                <button
-                  onClick={onPrevious}
-                  className="hidden md:flex absolute left-4 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-20 pointer-events-auto"
-                  aria-label="Previous item"
+            aria-label={t.closeMedia}
+            className="flex size-11 items-center justify-center rounded-full border border-white/30 hover:bg-white/10"
+          >
+            <X size={22} aria-hidden="true" />
+          </button>
+        </div>
+        {isOpen && current && (
+          <>
+            <div className="relative flex min-h-0 flex-1 items-center justify-center">
+              {current.type === "video" ? (
+                <video
+                  ref={videoRef}
+                  key={current.videoUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="max-h-full max-w-full rounded-xl"
+                  aria-label={current.title}
                 >
-                  <ChevronLeft size={48} />
-                </button>
-                <button
-                  onClick={onNext}
-                  className="hidden md:flex absolute right-4 p-4 text-white hover:bg-white/10 rounded-full transition-colors z-20 pointer-events-auto"
-                >
-                  <ChevronRight size={48} />
-                </button>
-              </>
-            )}
-
-            {/* Content Container */}
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-              className="w-full h-full flex flex-col items-center justify-center p-4 md:p-12 pointer-events-none"
-            >
-              <div className="relative w-full h-full flex items-center justify-center pointer-events-auto">
-                <div className="relative max-w-full max-h-full flex items-center justify-center bg-neutral-900 rounded-lg overflow-hidden shadow-2xl">
-                  {currentItem.type === 'video' ? (
-                    <video
-                      key={currentItem.videoUrl}
-                      controls
-                      autoPlay
-                      playsInline
-                      className="max-w-full max-h-[70vh] md:max-h-[85vh] w-auto h-auto"
-                    >
-                      <source src={currentItem.videoUrl} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  ) : (
-                    <div className="relative w-[90vw] h-[70vh] md:w-[80vw] md:h-[80vh]">
-                      <Image
-                        src={currentItem.fullSize || currentItem.thumbnail}
-                        alt={currentItem.alt}
-                        fill
-                        className="object-contain"
-                        priority
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Mobile Navigation & Info */}
-              <div className="mt-4 flex flex-col items-center space-y-4 pointer-events-auto w-full max-w-md">
-                <div className="text-center">
-                  <p className="text-white text-base md:text-lg font-medium line-clamp-1">{currentItem.title}</p>
-                  <p className="text-white/60 text-sm">
-                    {currentIndex + 1} / {items.length}
-                  </p>
-                </div>
-
-                {/* Mobile Navigation Buttons */}
+                  <source src={current.videoUrl} />
+                  {t.videoFallback}
+                </video>
+              ) : (
+                <Image
+                  key={current.fullSize || current.thumbnail}
+                  src={current.fullSize || current.thumbnail}
+                  alt={current.alt}
+                  fill
+                  sizes="95vw"
+                  className="object-contain"
+                  priority
+                />
+              )}
+            </div>
+            <div className="flex shrink-0 flex-col items-center gap-3 pb-[env(safe-area-inset-bottom)]">
+              <h2
+                id="media-title"
+                className="max-w-2xl text-center text-base font-medium tracking-normal"
+              >
+                {current.title}
+              </h2>
+              <div className="flex items-center gap-6">
                 {items.length > 1 && (
-                  <div className="flex items-center space-x-8 md:hidden">
-                    <button
-                      onClick={onPrevious}
-                      className="p-3 text-white bg-white/10 rounded-full hover:bg-white/20 transition-colors"
-                      aria-label="Previous item"
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      onClick={onNext}
-                      className="p-3 text-white bg-white/10 rounded-full hover:bg-white/20 transition-colors"
-                      aria-label="Next item"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={onPrevious}
+                    aria-label={t.previous}
+                    className="flex size-12 items-center justify-center rounded-full border border-white/30 hover:bg-white/10"
+                  >
+                    <ChevronLeft className="directional" aria-hidden="true" />
+                  </button>
+                )}
+                <p
+                  className="text-sm tabular-nums text-white/80"
+                  aria-live="polite"
+                >
+                  {new Intl.NumberFormat(locale).format(currentIndex + 1)} /{" "}
+                  {new Intl.NumberFormat(locale).format(items.length)}
+                </p>
+                {items.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={onNext}
+                    aria-label={t.next}
+                    className="flex size-12 items-center justify-center rounded-full border border-white/30 hover:bg-white/10"
+                  >
+                    <ChevronRight className="directional" aria-hidden="true" />
+                  </button>
                 )}
               </div>
-            </motion.div>
-          </div>
-        </>
-      )}
-    </AnimatePresence>
+              {current.type === "video" && (
+                <a
+                  href={current.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm underline underline-offset-4"
+                >
+                  {t.original}
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </dialog>
   );
 }
-

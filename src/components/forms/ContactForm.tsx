@@ -1,170 +1,154 @@
-'use client';
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  subject: z.string().min(3, 'Subject must be at least 3 characters'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
-interface ContactFormProps {
+"use client";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { useSite } from "../providers/SiteProvider";
+export default function ContactForm({
+  recipientEmail,
+}: {
   recipientEmail: string;
-}
-
-export default function ContactForm({ recipientEmail }: ContactFormProps) {
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+}) {
+  const { t } = useSite();
+  const [status, setStatus] = useState<"idle" | "draft" | "error">("idle");
+  const schema = z.object({
+    name: z.string().trim().min(2, t.nameError).max(100, t.maxError),
+    email: z.string().trim().email(t.emailError).max(254, t.maxError),
+    subject: z.string().trim().min(3, t.subjectError).max(150, t.maxError),
+    message: z.string().trim().min(10, t.messageError).max(2000, t.maxError),
+  });
+  type Data = z.infer<typeof schema>;
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  });
-
-  const onSubmit = async (data: ContactFormData) => {
+    formState: { errors },
+  } = useForm<Data>({ resolver: zodResolver(schema) });
+  function submit(data: Data) {
+    const body = `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`;
     try {
-      // Construct email body
-      const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-      const subject = `[Website Inquiry] ${data.subject}`;
-
-      // Create mailto link
-      const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      // Open email client
-      window.location.href = mailtoLink;
-
-      // Show success message
-      setSubmitStatus('success');
-      reset();
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      window.location.assign(
+        `mailto:${recipientEmail}?subject=${encodeURIComponent(`[IEEE BUC] ${data.subject}`)}&body=${encodeURIComponent(body)}`,
+      );
+      setStatus("draft");
     } catch {
-      setSubmitStatus('error');
+      setStatus("error");
     }
-  };
-
+  }
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Name */}
+    <form onSubmit={handleSubmit(submit)} noValidate className="space-y-5">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-neutral-800 mb-2">
-          Name *
-        </label>
-        <input
-          {...register('name')}
-          type="text"
-          id="name"
-          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ieee-blue focus:border-transparent transition-colors"
-          aria-invalid={errors.name ? 'true' : 'false'}
-          aria-describedby={errors.name ? 'name-error' : undefined}
-        />
-        {errors.name && (
-          <p id="name-error" className="mt-2 text-sm text-red-600" role="alert">
-            {errors.name.message}
-          </p>
-        )}
+        <h2 className="text-2xl font-semibold">{t.formTitle}</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{t.draftNote}</p>
+        <p className="mt-3 text-xs text-muted">{t.required}</p>
       </div>
-
-      {/* Email */}
+      {(
+        [
+          {
+            name: "name",
+            label: t.name,
+            placeholder: t.namePlaceholder,
+            autoComplete: "name",
+            type: "text",
+            max: 100,
+          },
+          {
+            name: "email",
+            label: t.email,
+            placeholder: "you@example.com",
+            autoComplete: "email",
+            type: "email",
+            max: 254,
+          },
+          {
+            name: "subject",
+            label: t.subject,
+            placeholder: t.subjectPlaceholder,
+            autoComplete: "off",
+            type: "text",
+            max: 150,
+          },
+        ] as const
+      ).map((field) => (
+        <div key={field.name}>
+          <label
+            htmlFor={field.name}
+            className="mb-2 block text-sm font-medium"
+          >
+            {field.label}
+          </label>
+          <input
+            {...register(field.name)}
+            id={field.name}
+            type={field.type}
+            autoComplete={field.autoComplete}
+            maxLength={field.max}
+            required
+            placeholder={field.placeholder}
+            dir={field.name === "email" ? "ltr" : undefined}
+            className="form-field"
+            aria-invalid={Boolean(errors[field.name])}
+            aria-describedby={
+              errors[field.name] ? `${field.name}-error` : undefined
+            }
+          />
+          {errors[field.name] && (
+            <p
+              id={`${field.name}-error`}
+              role="alert"
+              className="mt-2 text-sm font-medium text-ink"
+            >
+              {errors[field.name]?.message}
+            </p>
+          )}
+        </div>
+      ))}
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-neutral-800 mb-2">
-          Email *
-        </label>
-        <input
-          {...register('email')}
-          type="email"
-          id="email"
-          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ieee-blue focus:border-transparent transition-colors"
-          aria-invalid={errors.email ? 'true' : 'false'}
-          aria-describedby={errors.email ? 'email-error' : undefined}
-        />
-        {errors.email && (
-          <p id="email-error" className="mt-2 text-sm text-red-600" role="alert">
-            {errors.email.message}
-          </p>
-        )}
-      </div>
-
-      {/* Subject */}
-      <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-neutral-800 mb-2">
-          Subject *
-        </label>
-        <input
-          {...register('subject')}
-          type="text"
-          id="subject"
-          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ieee-blue focus:border-transparent transition-colors"
-          aria-invalid={errors.subject ? 'true' : 'false'}
-          aria-describedby={errors.subject ? 'subject-error' : undefined}
-        />
-        {errors.subject && (
-          <p id="subject-error" className="mt-2 text-sm text-red-600" role="alert">
-            {errors.subject.message}
-          </p>
-        )}
-      </div>
-
-      {/* Message */}
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-neutral-800 mb-2">
-          Message *
+        <label htmlFor="message" className="mb-2 block text-sm font-medium">
+          {t.message}
         </label>
         <textarea
-          {...register('message')}
+          {...register("message")}
           id="message"
+          required
           rows={6}
-          className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-ieee-blue focus:border-transparent resize-none transition-colors"
-          aria-invalid={errors.message ? 'true' : 'false'}
-          aria-describedby={errors.message ? 'message-error' : undefined}
+          maxLength={2000}
+          placeholder={t.messagePlaceholder}
+          className="form-field resize-y"
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
         {errors.message && (
-          <p id="message-error" className="mt-2 text-sm text-red-600" role="alert">
+          <p
+            id="message-error"
+            role="alert"
+            className="mt-2 text-sm font-medium"
+          >
             {errors.message.message}
           </p>
         )}
       </div>
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full flex items-center justify-center px-6 py-4 bg-ieee-blue text-white rounded-lg font-semibold hover:bg-ieee-blue-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
-      >
-        {isSubmitting ? (
-          'Sending...'
-        ) : (
-          <>
-            Send Message
-            <Send size={18} className="ml-2" />
-          </>
-        )}
+      <button type="submit" className="button-primary w-full">
+        {t.openDraft}
+        <ArrowUpRight size={18} aria-hidden="true" />
       </button>
-
-      {/* Success Message */}
-      {submitStatus === 'success' && (
-        <div className="flex items-center p-4 bg-green-50 border border-green-200 rounded-lg text-green-800" role="status">
-          <CheckCircle size={20} className="mr-3 flex-shrink-0" />
-          <p>Thank you! Your message has been sent successfully.</p>
-        </div>
+      {status !== "idle" && (
+        <p
+          className="rounded-xl border border-line bg-surface-soft p-4 text-sm leading-relaxed"
+          role="status"
+        >
+          {status === "draft" ? t.draftOpened : t.draftError}
+        </p>
       )}
-
-      {/* Error Message */}
-      {submitStatus === 'error' && (
-        <div className="flex items-center p-4 bg-red-50 border border-red-200 rounded-lg text-red-800" role="alert">
-          <AlertCircle size={20} className="mr-3 flex-shrink-0" />
-          <p>Sorry, something went wrong. Please try again later or email us directly.</p>
-        </div>
-      )}
+      <p className="text-xs leading-relaxed text-muted">{t.privacy}</p>
+      <p className="border-t border-line pt-4 text-sm text-muted">
+        {t.directEmail}
+        <br />
+        <a href={`mailto:${recipientEmail}`} className="action-link break-all">
+          <Mail size={16} aria-hidden="true" />
+          <bdi>{recipientEmail}</bdi>
+        </a>
+      </p>
     </form>
   );
 }
-

@@ -1,51 +1,57 @@
-import { Event } from './content';
-
+import { getSiteInfo, type Event } from "./content";
+import { siteUrl } from "./seo";
 export function generateOrganizationSchema() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-
+  const site = getSiteInfo();
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'IEEE Student Branch - Buraimi University College',
-    url: baseUrl,
-    logo: `${baseUrl}/images/logo.png`,
-    sameAs: [
-      'https://instagram.com/ieee_buc',
-      'https://facebook.com/ieeebuc',
-      'https://linkedin.com/company/ieee-buc',
-    ],
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.siteName,
+    url: siteUrl(),
+    logo: `${siteUrl()}/images/logo.png`,
+    sameAs: [site.socials.instagram].filter(Boolean),
     contactPoint: {
-      '@type': 'ContactPoint',
-      email: 'ieee@buc.edu.om',
-      contactType: 'General Inquiries',
+      "@type": "ContactPoint",
+      email: site.email,
+      contactType: "General enquiries",
     },
   };
 }
-
 export function generateEventSchema(event: Event) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
+    "@context": "https://schema.org",
+    "@type": "Event",
     name: event.title,
     description: event.description,
     startDate: event.date,
-    location: {
-      '@type': 'Place',
-      name: event.location,
-      address: 'Buraimi University College, Al Buraimi, Oman',
-    },
-    image: `${baseUrl}${event.image}`,
+    endDate: event.endDate,
+    eventAttendanceMode: `https://schema.org/${event.online ? "Online" : "Offline"}EventAttendanceMode`,
+    eventStatus: "https://schema.org/EventScheduled",
+    location: event.online
+      ? {
+          "@type": "VirtualLocation",
+          url: event.registrationLink || `${siteUrl()}/events/${event.slug}`,
+        }
+      : {
+          "@type": "Place",
+          name: event.location,
+          address: "Buraimi University College, Al Buraimi, Oman",
+        },
+    image: new URL(event.image, siteUrl()).href,
     organizer: {
-      '@type': 'Organization',
-      name: 'IEEE BUC Student Branch',
-      url: baseUrl,
+      "@type": "Organization",
+      name: "IEEE BUC Student Branch",
+      url: siteUrl(),
     },
-    eventStatus: event.status === 'upcoming'
-      ? 'https://schema.org/EventScheduled'
-      : 'https://schema.org/EventScheduled',
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    ...(event.admission
+      ? {
+          isAccessibleForFree: true,
+          offers: {
+            "@type": "Offer",
+            price: 0,
+            priceCurrency: "OMR",
+            url: event.registrationLink,
+          },
+        }
+      : {}),
   };
 }
-

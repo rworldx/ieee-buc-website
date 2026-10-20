@@ -1,26 +1,26 @@
-import Link from 'next/link';
-import { Mail } from 'lucide-react';
-import Section from '../layout/Section';
-
-export default function CTABand() {
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Section from "../layout/Section";
+import { messages, localHref, type Locale } from "@/lib/i18n";
+export default function CTABand({ locale = "en" }: { locale?: Locale }) {
+  const t = messages[locale];
   return (
-    <Section className="bg-ieee-blue text-white">
-      <div className="text-center max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Get Started?
-        </h2>
-        <p className="text-lg md:text-xl mb-8 opacity-90">
-          Join IEEE BUC and be part of a community that&apos;s shaping the future of technology.
-        </p>
+    <Section>
+      <div className="flex flex-col justify-between gap-8 rounded-3xl border border-line bg-surface-soft p-7 sm:p-12 lg:flex-row lg:items-center">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-semibold md:text-4xl">{t.ctaTitle}</h2>
+          <p className="mt-5 max-w-xl leading-relaxed text-muted">
+            {t.ctaText}
+          </p>
+        </div>
         <Link
-          href="/contact"
-          className="inline-flex items-center justify-center px-8 py-4 bg-white text-ieee-blue rounded-lg font-semibold hover:bg-neutral-100 transition-colors shadow-lg"
+          href={localHref("/contact", locale)}
+          className="button-primary shrink-0 self-start lg:self-center"
         >
-          <Mail size={20} className="mr-2" />
-          Contact Us
+          {t.contact}
+          <ArrowUpRight size={18} className="directional" aria-hidden="true" />
         </Link>
       </div>
     </Section>
   );
 }
-
