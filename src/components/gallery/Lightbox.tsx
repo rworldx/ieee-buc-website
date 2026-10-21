@@ -1,4 +1,5 @@
 "use client";
+import { playbackVideoUrl } from "@/lib/video-media";
 import { useEffect, useRef } from "react";
 import { containDialogTab } from "@/lib/dialog-focus";
 import { X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
@@ -91,10 +92,11 @@ export default function Lightbox({
                   controls
                   playsInline
                   preload="metadata"
+                  poster={current.thumbnail}
                   className="max-h-full max-w-full rounded-xl"
                   aria-label={current.title}
                 >
-                  <source src={current.videoUrl} />
+                  <source src={playbackVideoUrl(current.videoUrl)} />
                   {t.videoFallback}
                 </video>
               ) : (

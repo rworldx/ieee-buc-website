@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test scripts/site.test.mjs",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
+    "test:dependencies": "node --test scripts/dependency-security.test.mjs",
     "test:preview": "node scripts/check-preview.mjs"
   },
   "dependencies": {
@@ -35,5 +36,10 @@
     "prettier": "^3.9.10",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "7.1.7"
+    }
   }
 }

@@ -29,6 +29,7 @@
   --ink: #2c3e50;
   --muted: #6b7280;
   --line: #e5e5e5;
+  --field-border: #7b8490;
   --link: #00629b;
   color-scheme: light;
 }
@@ -40,6 +41,7 @@
   --ink: #faf9f6;
   --muted: #c5cbd2;
   --line: #4b5c6c;
+  --field-border: #8193a5;
   --link: #a7dfff;
   color-scheme: dark;
 }
@@ -134,7 +136,7 @@
     @apply bg-surface-soft text-ink hover:underline;
   }
   .form-field {
-    @apply w-full rounded-xl border border-line bg-surface-soft px-4 py-3 text-base transition-colors focus:border-link focus:bg-surface;
+    @apply w-full rounded-xl border border-[var(--field-border)] bg-surface-soft px-4 py-3 text-base transition-colors focus:border-link focus:bg-surface;
   }
   .skip-link {
     @apply fixed start-4 top-3 z-[100] -translate-y-24 rounded-lg bg-ieee-blue px-5 py-3 font-semibold text-white focus:translate-y-0;

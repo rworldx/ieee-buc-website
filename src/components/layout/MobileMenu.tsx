@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { containDialogTab } from "@/lib/dialog-focus";
+import { finishDialogExit } from "@/lib/dialog-exit";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ArrowUpRight } from "lucide-react";
@@ -17,6 +18,8 @@ export default function MobileMenu({
   links: { href: string; label: string }[];
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
+  const exitAnimation = useRef<Animation | null>(null);
   const pathname = usePathname();
   const { locale, t } = useSite();
   const closing = useRef(false);
@@ -28,9 +31,10 @@ export default function MobileMenu({
       return;
     }
     closing.current = true;
+    const currentStyle = getComputedStyle(dialog);
     const animation = dialog.animate(
       [
-        { opacity: 1, transform: "translateX(0)" },
+        { opacity: currentStyle.opacity, transform: currentStyle.transform },
         {
           opacity: 0,
           transform: `translateX(${locale === "ar" ? "-" : ""}100%)`,
@@ -38,10 +42,9 @@ export default function MobileMenu({
       ],
       { duration: 200, easing: "cubic-bezier(.4,0,1,1)", fill: "forwards" },
     );
+    exitAnimation.current = animation;
     animation.onfinish = () => {
-      animation.cancel();
-      closing.current = false;
-      onClose();
+      finishDialogExit(dialog, animation, onClose);
     };
   }
   useEffect(() => {
@@ -51,10 +54,18 @@ export default function MobileMenu({
     const rootOverflow = document.documentElement.style.overflow;
     const bodyOverflow = document.body.style.overflow;
     dialog.showModal();
+    // Start at the menu heading, not a selected-looking close control.
+    titleRef.current?.focus({ preventScroll: true });
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     return () => {
       if (dialog.open) dialog.close();
+      if (exitAnimation.current) {
+        exitAnimation.current.onfinish = null;
+        exitAnimation.current.cancel();
+        exitAnimation.current = null;
+      }
+      closing.current = false;
       document.documentElement.style.overflow = rootOverflow;
       document.body.style.overflow = bodyOverflow;
       previous?.focus({ preventScroll: true });
@@ -82,7 +93,12 @@ export default function MobileMenu({
       }}
     >
       <div className="flex items-center justify-between border-b border-line pb-5">
-        <p id="menu-title" className="font-semibold">
+        <p
+          ref={titleRef}
+          id="menu-title"
+          tabIndex={-1}
+          className="font-semibold outline-none"
+        >
           {t.branch}
         </p>
         <button

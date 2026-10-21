@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import Section from "../layout/Section";
 import EventCard from "../cards/EventCard";
@@ -10,7 +10,6 @@ export default function EventsFilter({ events }: { events: Event[] }) {
   const { locale, t } = useSite();
   const params = useSearchParams();
   const pathname = usePathname();
-  const router = useRouter();
   const [query, setQuery] = useState("");
   const raw = params.get("status");
   const filter = raw === "past" || raw === "upcoming" ? raw : "all";
@@ -18,9 +17,11 @@ export default function EventsFilter({ events }: { events: Event[] }) {
     const next = new URLSearchParams(params.toString());
     if (value === "all") next.delete("status");
     else next.set("status", value);
-    router.replace(`${pathname}${next.size ? `?${next}` : ""}`, {
-      scroll: false,
-    });
+    window.history.replaceState(
+      null,
+      "",
+      `${pathname}${next.size ? `?${next}` : ""}${window.location.hash}`,
+    );
   }
   const results = events.filter(
     (e) =>
