@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import { localHref, type Locale } from "./i18n";
+import { defaultSocialImage } from "./social-preview";
 export function siteUrl() {
   const configured = process.env.NEXT_PUBLIC_BASE_URL;
-  return configured ? new URL(configured).origin : "http://localhost:3100";
+  return configured
+    ? new URL(configured).origin
+    : "https://ieee-buc-website.vercel.app";
 }
 export function generateMetadata({
   title,
   description,
   path = "",
-  image = "/images/logo.png",
+  image = defaultSocialImage.url,
   locale = "en",
 }: {
   title: string;
@@ -20,6 +23,10 @@ export function generateMetadata({
   const base = siteUrl();
   const route = path || "/";
   const absolute = new URL(image, base).href;
+  const socialImage =
+    image === defaultSocialImage.url
+      ? { ...defaultSocialImage, url: absolute }
+      : { url: absolute, alt: title };
   return {
     metadataBase: new URL(base),
     title,
@@ -33,7 +40,7 @@ export function generateMetadata({
       description,
       url: localHref(route, locale),
       siteName: "IEEE BUC Student Branch",
-      images: [{ url: absolute }],
+      images: [socialImage],
       locale: locale === "ar" ? "ar_OM" : "en_GB",
       alternateLocale: locale === "ar" ? ["en_GB"] : ["ar_OM"],
       type: "website",
@@ -42,7 +49,7 @@ export function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [absolute],
+      images: [{ url: absolute, alt: socialImage.alt }],
     },
   };
 }

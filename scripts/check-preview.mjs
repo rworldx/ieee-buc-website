@@ -44,6 +44,19 @@ for (const locale of ["en", "ar"]) {
     }
     assert.match(html, /rel="canonical"/);
     assert.match(html, /hrefLang="ar"/i);
+    assert.match(html, /name="twitter:card" content="summary_large_image"/);
+    if (!path.startsWith("/events/")) {
+      assert.match(
+        html,
+        /property="og:image" content="https?:\/\/[^" ]+\/images\/ieee-buc-social-2026.jpg"/,
+      );
+      assert.match(html, /property="og:image:width" content="1200"/);
+      assert.match(html, /property="og:image:height" content="630"/);
+      assert.match(
+        html,
+        /name="twitter:image" content="https?:\/\/[^" ]+\/images\/ieee-buc-social-2026.jpg"/,
+      );
+    }
     pages++;
   }
 }
