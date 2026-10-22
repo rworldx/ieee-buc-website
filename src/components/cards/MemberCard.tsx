@@ -115,15 +115,6 @@ export default function MemberCard({
               <Linkedin size={18} aria-hidden="true" />
             </a>
           )}
-          {member.ieeeNumber && (
-            <p className="ms-auto self-center text-xs text-muted">
-              <span aria-hidden="true">IEEE </span>
-              <span className="sr-only">{t.ieeeMember} </span>
-              <span dir="ltr" className="tabular-nums">
-                {member.ieeeNumber}
-              </span>
-            </p>
-          )}
         </div>
       </div>
     </article>
