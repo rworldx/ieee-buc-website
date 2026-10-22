@@ -6,7 +6,7 @@ export default function StatsSection({ locale = "en" }: { locale?: Locale }) {
   const events = getEvents();
   const stats = [
     [team.executive.length + team.members.length, t.membersCount, true],
-    [events.filter((e) => e.status === "past").length, t.pastCount, false],
+    [events.filter((e) => e.status === "past").length, t.pastCount, true],
     [
       events.filter((e) => e.status === "upcoming").length,
       t.upcomingCount,
