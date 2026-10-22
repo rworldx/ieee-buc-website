@@ -26,7 +26,7 @@ test("branch copy offers contact, not open membership recruitment", () => {
   }
 });
 
-test("Sara is the sole vice chair and Abdullah remains a regular member", () => {
+test("Sara is the sole vice chair and Abdullah is no longer listed", () => {
   const team = JSON.parse(
     readFileSync(new URL("../src/content/team.json", import.meta.url)),
   );
@@ -37,12 +37,12 @@ test("Sara is the sole vice chair and Abdullah remains a regular member", () => 
   assert.equal(viceChairs[0].name, "Sara Al-balushi");
   assert.equal(viceChairs[0].email, "F2024000243@buc.edu.om");
   assert.equal(
-    team.members.find((member) => member.name === "Abdullah Al Farsi")?.email,
-    "m201900001@buc.edu.om",
+    team.members.some((member) => member.name === "Abdullah Al Farsi"),
+    false,
   );
   const names = [...team.executive, ...team.members].map(
     (member) => member.name,
   );
-  assert.equal(names.length, 17);
+  assert.equal(names.length, 16);
   assert.equal(new Set(names).size, names.length);
 });

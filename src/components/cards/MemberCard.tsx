@@ -33,7 +33,19 @@ export default function MemberCard({
   locale?: Locale;
 }) {
   const t = messages[locale];
-  const role = "role" in member ? member.role : member.department || "";
+  const role = "role" in member ? member.role : "Member";
+  const department =
+    "department" in member && member.department
+      ? locale === "ar"
+        ? roles[member.department] || member.department
+        : member.department
+      : "";
+  const roleLabel =
+    locale === "ar"
+      ? role === "Member"
+        ? "عضو"
+        : roles[role] || role
+      : role;
   const avatarColors =
     member.gender === "female"
       ? "bg-pink-50 text-pink-700 dark:bg-pink-950 dark:text-pink-200"
@@ -42,10 +54,10 @@ export default function MemberCard({
         : "bg-surface-soft text-link";
   return (
     <article
-      className={`flex min-w-0 gap-5 rounded-2xl border border-line bg-card ${isExecutive ? "flex-col p-6" : "items-center p-4"}`}
+      className="flex min-w-0 flex-col gap-5 rounded-2xl border border-line bg-card p-6"
     >
       <div
-        className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium ${avatarColors} ${isExecutive ? "size-20 text-xl" : "size-12 text-sm"}`}
+        className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full font-medium ${avatarColors} size-20 text-xl`}
       >
         {member.photo ? (
           <Image
@@ -57,26 +69,30 @@ export default function MemberCard({
           />
         ) : (
           <UserRound
-            size={isExecutive ? 40 : 24}
+            size={40}
             strokeWidth={1.75}
             aria-hidden="true"
           />
         )}
       </div>
       <div className="flex min-w-0 flex-1 flex-col">
-        <h3
-          className={`${isExecutive ? "text-xl" : "text-base"} font-semibold leading-snug`}
-        >
+        <h3 className="text-xl font-semibold leading-snug">
           <bdi>{member.name}</bdi>
         </h3>
         <div className="mt-2 flex min-w-0 items-center gap-2 text-sm text-link">
-          {isExecutive && <RoleBadge role={role} />}
-          <p>{locale === "ar" ? roles[role] || role : role}</p>
+          <RoleBadge role={role} />
+          <p>{roleLabel}</p>
         </div>
-        {isExecutive && "bio" in member && member.bio && (
+        {isExecutive && "bio" in member && member.bio ? (
           <p className="mt-3 text-sm leading-relaxed text-muted">
             {locale === "ar" ? arabicBios[role] || member.bio : member.bio}
           </p>
+        ) : (
+          department && (
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              {department}
+            </p>
+          )
         )}
         <div className="mt-auto flex gap-2 pt-4">
           {member.email && (
@@ -98,6 +114,15 @@ export default function MemberCard({
             >
               <Linkedin size={18} aria-hidden="true" />
             </a>
+          )}
+          {member.ieeeNumber && (
+            <p className="ms-auto self-center text-xs text-muted">
+              <span aria-hidden="true">IEEE </span>
+              <span className="sr-only">{t.ieeeMember} </span>
+              <span dir="ltr" className="tabular-nums">
+                {member.ieeeNumber}
+              </span>
+            </p>
           )}
         </div>
       </div>

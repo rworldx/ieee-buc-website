@@ -137,6 +137,7 @@ export const messages = {
     membersDescription:
       "Different interests. A shared curiosity for technology.",
     emailPerson: "Email",
+    ieeeMember: "IEEE member number",
     contactTitle: "Let’s start a conversation.",
     contactDescription:
       "Ask about our activities, suggest an event, or contact the branch with a question.",
@@ -306,6 +307,7 @@ export const messages = {
     members: "أعضاؤنا",
     membersDescription: "اهتمامات متنوعة، وفضول مشترك تجاه التقنية.",
     emailPerson: "راسل",
+    ieeeMember: "رقم العضو في IEEE",
     contactTitle: "لنبدأ حوارًا.",
     contactDescription:
       "استفسر عن أنشطتنا، أو اقترح فعالية، أو تواصل مع الفرع لطرح سؤالك.",

@@ -13,6 +13,7 @@
       "name": "Rawan Darwish",
       "role": "Chair",
       "email": "f202200347@buc.edu.om",
+      "ieeeNumber": "101369230",
       "photo": "",
       "bio": "Leading the IEEE BUC Student Branch initiatives",
       "linkedin": "",
@@ -31,6 +32,7 @@
       "name": "Maather Al Ghareebi",
       "role": "Secretary",
       "email": "F202000505@buc.edu.om",
+      "ieeeNumber": "101369102",
       "photo": "",
       "bio": "Managing branch documentation and communications",
       "linkedin": "",
@@ -40,6 +42,7 @@
       "name": "Rashid Al Ghafri",
       "role": "Webmaster",
       "email": "m202200250@buc.edu.om",
+      "ieeeNumber": "101341924",
       "photo": "",
       "bio": "Maintaining the IEEE BUC website and digital presence",
       "linkedin": "",
@@ -49,6 +52,7 @@
       "name": "Muna Al Kaabi",
       "role": "Treasurer",
       "email": "F202100558@buc.edu.om",
+      "ieeeNumber": "101342858",
       "photo": "",
       "bio": "Managing branch finances and budgets",
       "linkedin": "",
@@ -60,6 +64,7 @@
       "name": "Aisha Al Qassabi",
       "department": "Software Engineering",
       "email": "f202100224@buc.edu.om",
+      "ieeeNumber": "101369136",
       "photo": "",
       "gender": "female"
     },
@@ -67,6 +72,7 @@
       "name": "Salha Al Balushi",
       "department": "Software Engineering",
       "email": "f202100186@buc.edu.om",
+      "ieeeNumber": "101344556",
       "photo": "",
       "gender": "female"
     },
@@ -74,6 +80,7 @@
       "name": "Abdullrahman Al Badi",
       "department": "Computer Science",
       "email": "m2023000358@buc.edu.om",
+      "ieeeNumber": "101342148",
       "photo": "",
       "gender": "male"
     },
@@ -81,6 +88,7 @@
       "name": "Sheikha Al Kaabi",
       "department": "Information System",
       "email": "F202100104@buc.edu.om",
+      "ieeeNumber": "101370175",
       "photo": "",
       "gender": "female"
     },
@@ -88,6 +96,7 @@
       "name": "Omar Al Shukaili",
       "department": "Computer Science",
       "email": "m202100421@buc.edu.om",
+      "ieeeNumber": "101341512",
       "photo": "",
       "gender": "male"
     },
@@ -95,6 +104,7 @@
       "name": "Hanan Al Mahmoodi",
       "department": "Software Engineering",
       "email": "f202200002@buc.edu.om",
+      "ieeeNumber": "101370223",
       "photo": "",
       "gender": "female"
     },
@@ -102,6 +112,7 @@
       "name": "Omar Abubaker",
       "department": "Software Engineering",
       "email": "m2023000306@buc.edu.om",
+      "ieeeNumber": "101342083",
       "photo": "",
       "gender": "male"
     },
@@ -125,12 +136,6 @@
       "email": "f2023000181@buc.edu.om",
       "photo": "",
       "gender": "female"
-    },
-    {
-      "name": "Abdullah Al Farsi",
-      "email": "m201900001@buc.edu.om",
-      "photo": "",
-      "gender": "male"
     }
   ]
 }

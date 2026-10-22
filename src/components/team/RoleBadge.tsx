@@ -4,6 +4,7 @@ import {
   CodeXml,
   GraduationCap,
   Handshake,
+  IdCard,
   WalletCards,
   type LucideIcon,
 } from "lucide-react";
@@ -15,6 +16,7 @@ const roleIcons: Record<string, LucideIcon> = {
   Secretary: ClipboardPenLine,
   Webmaster: CodeXml,
   Treasurer: WalletCards,
+  Member: IdCard,
 };
 
 /** A decorative circular cue paired with the visible role label. */
