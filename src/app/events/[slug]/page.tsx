@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Section from "@/components/layout/Section";
 import EventMedia from "@/components/events/EventMedia";
-import { getEventBySlug } from "@/lib/content";
+import { getEventBySlug, getGallery } from "@/lib/content";
 import { getLocale } from "@/lib/locale";
 import { messages, localHref, categoryLabel } from "@/lib/i18n";
 import { formatEventDate, formatEventTime } from "@/lib/event-utils";
@@ -52,7 +52,10 @@ export default async function EventDetailPage({ params }: Props) {
       />
       <section className="bg-surface-soft py-12 md:py-16">
         <div className="container-custom">
-          <Link href={localHref("/events", locale)} className="action-link mb-6">
+          <Link
+            href={localHref("/events", locale)}
+            className="action-link mb-6"
+          >
             <ArrowLeft size={17} className="directional" aria-hidden="true" />
             {t.backEvents}
           </Link>
@@ -105,7 +108,7 @@ export default async function EventDetailPage({ params }: Props) {
               {[
                 {
                   icon: CalendarDays,
-                  label: t.eventDate,
+                  label: event.dateLabel || t.eventDate,
                   value: formatEventDate(event.date, locale, {
                     weekday: "long",
                   }),
@@ -198,6 +201,7 @@ export default async function EventDetailPage({ params }: Props) {
           </figcaption>
         </figure>
         <EventMedia
+          galleryItems={getGallery(locale)}
           images={event.gallery || []}
           videos={event.videos || []}
           eventTitle={event.title}

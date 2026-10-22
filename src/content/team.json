@@ -19,13 +19,13 @@
       "gender": "female"
     },
     {
-      "name": "Abdullah Al Farsi",
+      "name": "Sara Al-balushi",
       "role": "Vice Chair",
-      "email": "m201900001@buc.edu.om",
+      "email": "F2024000243@buc.edu.om",
       "photo": "",
       "bio": "Supporting branch operations and event coordination",
       "linkedin": "",
-      "gender": "male"
+      "gender": "female"
     },
     {
       "name": "Maather Al Ghareebi",
@@ -127,11 +127,10 @@
       "gender": "female"
     },
     {
-      "name": "Sara Al-balushi",
-      "department": "Software Engineering",
-      "email": "F2024000243@buc.edu.om",
+      "name": "Abdullah Al Farsi",
+      "email": "m201900001@buc.edu.om",
       "photo": "",
-      "gender": "female"
+      "gender": "male"
     }
   ]
 }

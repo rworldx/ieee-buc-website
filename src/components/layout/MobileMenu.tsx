@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ArrowUpRight } from "lucide-react";
 import { useSite } from "../providers/SiteProvider";
-import { localHref } from "@/lib/i18n";
+import site from "@/content/site.json";
 import Preferences from "./Preferences";
 export default function MobileMenu({
   isOpen,
@@ -131,13 +131,13 @@ export default function MobileMenu({
           ))}
         </ul>
       </nav>
-      <Link
-        href={localHref("/contact#join", locale)}
+      <a
+        href={`mailto:${site.email}`}
         onClick={onClose}
         className="button-primary w-full"
       >
-        {t.join}
-      </Link>
+        {t.emailBranch}
+      </a>
       <div className="mt-6 border-t border-line pt-5">
         <Preferences />
       </div>

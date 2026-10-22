@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { messages, localHref, type Locale } from "@/lib/i18n";
+import site from "@/content/site.json";
 export default function Hero({ locale = "en" }: { locale?: Locale }) {
   const t = messages[locale];
   return (
@@ -34,17 +35,14 @@ export default function Hero({ locale = "en" }: { locale?: Locale }) {
                 className="directional"
               />
             </Link>
-            <Link
-              href={localHref("/contact#join", locale)}
-              className="action-link"
-            >
-              {t.join}
+            <a href={`mailto:${site.email}`} className="action-link">
+              {t.emailBranch}
               <ArrowRight
                 size={17}
                 aria-hidden="true"
                 className="directional"
               />
-            </Link>
+            </a>
           </div>
           <p className="mt-10 text-xs leading-relaxed text-muted">
             {t.branch}

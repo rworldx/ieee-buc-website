@@ -21,6 +21,11 @@ for (const locale of ["en", "ar"]) {
     const response = await fetch(new URL(route, origin));
     assert.equal(response.status, 200, route);
     const html = await response.text();
+    assert.doesNotMatch(
+      html,
+      /Join the branch|Ask about joining|انضم إلى الفرع|اسأل عن الانضمام|membership\/join|contact#join/i,
+      route,
+    );
     assert.match(html, new RegExp(`lang="${locale}"`), route);
     assert.match(
       html,

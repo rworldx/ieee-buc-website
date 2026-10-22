@@ -31,7 +31,6 @@ export default async function Footer() {
                 [t.gallery, "/gallery"],
                 [t.team, "/team"],
                 [t.contact, "/contact"],
-                [t.join, "/contact#join"],
               ].map(([name, href]) => (
                 <li key={href}>
                   <Link

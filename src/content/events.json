@@ -12,7 +12,7 @@
     "location": "Online via Google Meet",
     "online": true,
     "admission": "Free admission",
-    "image": "/images/events/cybersecurity-trends-2026/poster.jpg",
+    "image": "/images/community/publer-1792607283603.JPG",
     "imageFit": "contain",
     "registrationLink": "https://events.vtools.ieee.org/m/581451",
     "calendarLink": "https://events.vtools.ieee.org/event/581451/ical",
@@ -48,7 +48,9 @@
       "/images/events/branch-launch/IMG_3029.jpg",
       "/images/events/branch-launch/IMG_3143.jpg",
       "/images/events/branch-launch/IMG_3144.jpg",
-      "/images/events/branch-launch/IMG_3145.jpg"
+      "/images/events/branch-launch/IMG_3145.jpg",
+      "/images/community/publer-1792606979661.JPG",
+      "/images/community/publer-1792606981716.JPG"
     ],
     "videos": [
       "/videos/events/branch-launch/IMG_3012.mp4",
@@ -113,5 +115,43 @@
     "videos": [],
     "online": true,
     "imageFit": "contain"
+  },
+  {
+    "id": "ice-breaking-2026",
+    "slug": "ice-breaking-2026",
+    "title": "Ice-breaking event",
+    "date": "2026-04-21T11:00:00+04:00",
+    "endDate": "2026-04-21T15:00:00+04:00",
+    "type": "Community",
+    "status": "past",
+    "description": "An afternoon of interactive games, peer learning and connections at BUC.",
+    "longDescription": "The IEEE BUC Student Branch announced an ice-breaking event for students to connect through interactive games, get to know each other and learn from their peers.\n\nThe published programme scheduled the event for Tuesday, 21 April 2026, from 11 AM to 3 PM in Building A, Room 407.",
+    "location": "Building A, Room 407, Buraimi University College",
+    "image": "/images/community/publer-1792607219648.JPG",
+    "imageFit": "contain"
+  },
+  {
+    "id": "cpp-problem-solving-2026",
+    "slug": "cpp-problem-solving-2026",
+    "title": "Hands-on C++ problem-solving workshop",
+    "date": "2026-02-24",
+    "dateLabel": "Advertised start",
+    "type": "Workshop",
+    "status": "past",
+    "description": "A beginner workshop series developing programming skills through practical challenges, discussion and collaborative problem solving.",
+    "longDescription": "The beginner series was advertised to start on 24 February 2026, with sessions on Tuesdays from 9 to 10 AM in Building A, Auditorium 2.\n\nA first-day recap published on 3 March featured a session presented by Prof. Yasser Wazery. The 11 March post covered the third training day with Dr. Abeer Al-Sudairi, moving from basic concepts to intensive problem solving.\n\nThe 15 April recap highlighted challenging tasks, different solution approaches and discussion among participants. These are the publication dates of the recaps, not additional confirmed event dates.",
+    "location": "Building A, Auditorium 2, Buraimi University College",
+    "image": "/images/community/publer-1792607103853.JPG",
+    "imageFit": "contain",
+    "gallery": [
+      "/images/community/publer-1792607145520.JPG",
+      "/images/community/publer-1792607146463.JPG",
+      "/images/community/publer-1792607164886.JPG",
+      "/images/community/publer-1792607165667.JPG",
+      "/images/community/publer-1792607166627.JPG",
+      "/images/community/publer-1792607188588.JPG",
+      "/images/community/publer-1792607192682.JPG",
+      "/images/community/publer-1792607193955.JPG"
+    ]
   }
 ]

@@ -13,7 +13,6 @@ export const messages = {
     branch: "IEEE Student Branch",
     college: "Buraimi University College",
     oman: "Al Buraimi, Oman",
-    join: "Join the branch",
     explore: "Explore the branch",
     connected: "Stay connected",
     emailBranch: "Email the branch",
@@ -86,7 +85,7 @@ export const messages = {
     upcomingCount: "Upcoming events",
     ctaTitle: "Your next chapter starts with a conversation.",
     ctaText:
-      "Curious about IEEE, interested in volunteering, or have an idea for an event? We’d like to hear from you.",
+      "Have a question about our activities or an idea for an event? We’d like to hear from you.",
     aboutTitle: "Curiosity brings us together.",
     aboutDescription:
       "We are the IEEE Student Branch at Buraimi University College: a community connecting academic learning with the wider world of technology.",
@@ -112,8 +111,6 @@ export const messages = {
     global: "Rooted at BUC. Connected through IEEE.",
     globalText:
       "Our branch connects students to a global technical community, with opportunities for professional development, networking, and participation in IEEE activities.",
-    membershipNote:
-      "IEEE membership options, fees, and access to publications vary. Check the official IEEE website for current benefits.",
     galleryTitle: "Moments from our community.",
     galleryDescription:
       "A closer look at our events, conversations, and shared achievements. Open a photo or video to explore.",
@@ -142,18 +139,7 @@ export const messages = {
     emailPerson: "Email",
     contactTitle: "Let’s start a conversation.",
     contactDescription:
-      "Ask about joining, suggest an event, or tell us how you’d like to get involved.",
-    joinTitle: "Find your place at IEEE BUC",
-    joinText:
-      "Send the branch a short introduction and tell us what interests you. We can help with local activities, volunteering, and questions about IEEE membership.",
-    joinStep1: "Introduce yourself",
-    joinStep1Text:
-      "Tell us your name, area of study, and what you’d like to explore.",
-    joinStep2: "Choose how to get involved",
-    joinStep2Text: "Attend a session, volunteer at an event, or share an idea.",
-    joinStep3: "Explore IEEE membership",
-    joinStep3Text:
-      "Visit IEEE for official membership options and current fees.",
+      "Ask about our activities, suggest an event, or contact the branch with a question.",
     formTitle: "Write to the branch",
     draftNote:
       "This form opens a draft in your email app. Review it there and press Send to deliver your message.",
@@ -199,7 +185,6 @@ export const messages = {
     branch: "الفرع الطلابي لـ IEEE",
     college: "كلية البريمي الجامعية",
     oman: "البريمي، سلطنة عُمان",
-    join: "انضم إلى الفرع",
     explore: "اكتشف الفرع",
     connected: "ابقَ على تواصل",
     emailBranch: "راسل الفرع",
@@ -272,8 +257,7 @@ export const messages = {
     pastCount: "أنشطة في أرشيفنا",
     upcomingCount: "فعاليات قادمة",
     ctaTitle: "خطوتك القادمة تبدأ بحوار.",
-    ctaText:
-      "هل ترغب في معرفة المزيد عن IEEE، أو التطوع، أو اقتراح فعالية؟ يسعدنا أن نسمع منك.",
+    ctaText: "هل لديك سؤال عن أنشطتنا أو فكرة لفعالية؟ يسعدنا أن نسمع منك.",
     aboutTitle: "يجمعنا الفضول.",
     aboutDescription:
       "نحن الفرع الطلابي لـ IEEE في كلية البريمي الجامعية؛ مجتمع يربط التعلم الأكاديمي بعالم التقنية الأوسع.",
@@ -299,8 +283,6 @@ export const messages = {
     global: "ننطلق من الكلية. ونتواصل عبر IEEE.",
     globalText:
       "يربط فرعنا الطلاب بمجتمع تقني عالمي، ويتيح فرصًا للتطور المهني والتواصل والمشاركة في أنشطة IEEE.",
-    membershipNote:
-      "تختلف خيارات عضوية IEEE ورسومها وإمكانية الوصول إلى المنشورات. راجع الموقع الرسمي للاطلاع على المزايا الحالية.",
     galleryTitle: "لحظات من مجتمعنا.",
     galleryDescription:
       "نظرة أقرب إلى فعالياتنا وحواراتنا وإنجازاتنا المشتركة. افتح صورة أو مقطع فيديو لاستكشاف المزيد.",
@@ -326,17 +308,7 @@ export const messages = {
     emailPerson: "راسل",
     contactTitle: "لنبدأ حوارًا.",
     contactDescription:
-      "اسأل عن الانضمام، أو اقترح فعالية، أو أخبرنا كيف تود المشاركة.",
-    joinTitle: "اعثر على دورك في IEEE BUC",
-    joinText:
-      "أرسل للفرع نبذة قصيرة عنك وعن اهتماماتك. يمكننا مساعدتك في الأنشطة المحلية والتطوع والاستفسارات المتعلقة بعضوية IEEE.",
-    joinStep1: "عرّفنا بنفسك",
-    joinStep1Text: "أخبرنا باسمك وتخصصك وما ترغب في استكشافه.",
-    joinStep2: "اختر طريقة مشاركتك",
-    joinStep2Text: "احضر جلسة، أو تطوع في فعالية، أو شاركنا فكرة.",
-    joinStep3: "اكتشف عضوية IEEE",
-    joinStep3Text:
-      "راجع موقع IEEE للتعرف على خيارات العضوية الرسمية والرسوم الحالية.",
+      "استفسر عن أنشطتنا، أو اقترح فعالية، أو تواصل مع الفرع لطرح سؤالك.",
     formTitle: "اكتب إلى الفرع",
     draftNote:
       "يفتح هذا النموذج مسودة في تطبيق البريد الإلكتروني. راجعها هناك واضغط إرسال لإيصال رسالتك.",
@@ -373,6 +345,8 @@ export const messages = {
   },
 } as const;
 export const categories: Record<string, string> = {
+  Community: "المجتمع",
+  Announcements: "الإعلانات",
   Competitions: "المسابقات",
   Workshops: "الورش",
   Events: "الفعاليات",

@@ -29,38 +29,13 @@ export default async function ContactPage() {
       />
       <Section>
         <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
-          <div id="join" className="scroll-mt-28">
-            <h2 className="section-title">{t.joinTitle}</h2>
-            <p className="mt-6 leading-relaxed text-muted">{t.joinText}</p>
-            <ol className="mt-8 space-y-7">
-              {[
-                [t.joinStep1, t.joinStep1Text],
-                [t.joinStep2, t.joinStep2Text],
-                [t.joinStep3, t.joinStep3Text],
-              ].map(([title, text], i) => (
-                <li key={title} className="flex gap-4">
-                  <span
-                    className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line text-sm font-semibold text-link"
-                    aria-hidden="true"
-                  >
-                    {new Intl.NumberFormat(locale).format(i + 1)}
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">
-                      {text}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <a
-              href="https://www.ieee.org/membership/join"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-link mt-5"
-            >
-              {t.ieee}
+          <div id="email-branch" className="scroll-mt-28">
+            <h2 className="section-title">{t.emailBranch}</h2>
+            <p className="mt-6 leading-relaxed text-muted">
+              {t.contactDescription}
+            </p>
+            <a href={`mailto:${site.email}`} className="action-link mt-5">
+              <bdi>{site.email}</bdi>
               <ArrowUpRight size={17} aria-hidden="true" />
             </a>
             <div className="mt-10 space-y-4 border-t border-line pt-6">

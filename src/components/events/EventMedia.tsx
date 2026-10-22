@@ -1,14 +1,17 @@
 "use client";
 import GalleryGrid from "../gallery/GalleryGrid";
 import { useSite } from "../providers/SiteProvider";
+import type { GalleryItem } from "@/lib/content";
 export default function EventMedia({
   images,
   videos,
   eventTitle,
+  galleryItems = [],
 }: {
   images: string[];
   videos: string[];
   eventTitle: string;
+  galleryItems?: GalleryItem[];
 }) {
   const { t, locale } = useSite();
   const items = [
@@ -23,15 +26,18 @@ export default function EventMedia({
       alt: `${eventTitle} · ${t.video} ${i + 1}`,
       category: "Events",
     })),
-    ...images.map((url, i) => ({
-      id: url,
-      type: "image" as const,
-      thumbnail: url,
-      fullSize: url,
-      title: `${eventTitle} · ${t.image} ${new Intl.NumberFormat(locale).format(i + 1)}`,
-      alt: `${eventTitle} · ${t.image} ${i + 1}`,
-      category: "Events",
-    })),
+    ...images.map(
+      (url, i) =>
+        galleryItems.find((item) => item.fullSize === url) || {
+          id: url,
+          type: "image" as const,
+          thumbnail: url,
+          fullSize: url,
+          title: `${eventTitle} · ${t.image} ${new Intl.NumberFormat(locale).format(i + 1)}`,
+          alt: `${eventTitle} · ${t.image} ${i + 1}`,
+          category: "Events",
+        },
+    ),
   ];
   if (!items.length) return null;
   return (

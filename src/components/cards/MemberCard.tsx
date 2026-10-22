@@ -7,7 +7,7 @@ const arabicBios: Record<string, string> = {
   Counselor:
     "المستشارة الأكاديمية للفرع الطلابي لـ IEEE في كلية البريمي الجامعية",
   Chair: "تقود مبادرات الفرع الطلابي لـ IEEE في كلية البريمي الجامعية",
-  "Vice Chair": "يدعم أعمال الفرع وتنسيق فعالياته",
+  "Vice Chair": "تدعم أعمال الفرع وتنسيق فعالياته",
   Secretary: "تتولى توثيق أعمال الفرع وتنظيم مراسلاته",
   Webmaster: "يتولى إدارة موقع IEEE BUC وحضوره الرقمي",
   Treasurer: "تتولى إدارة الشؤون المالية والميزانية للفرع",
@@ -15,7 +15,7 @@ const arabicBios: Record<string, string> = {
 const roles: Record<string, string> = {
   Counselor: "مستشارة الفرع",
   Chair: "رئيسة الفرع",
-  "Vice Chair": "نائب الرئيس",
+  "Vice Chair": "نائبة رئيسة الفرع",
   Secretary: "أمينة السر",
   Webmaster: "مسؤول الموقع",
   Treasurer: "أمينة الصندوق",

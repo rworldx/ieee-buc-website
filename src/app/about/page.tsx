@@ -80,9 +80,6 @@ export default async function AboutPage() {
           <p className="mt-7 text-lg leading-relaxed text-muted">
             {t.globalText}
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-muted">
-            {t.membershipNote}
-          </p>
           <a
             href="https://www.ieee.org"
             target="_blank"

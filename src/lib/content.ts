@@ -30,6 +30,7 @@ export const EventSchema = z.object({
   title: z.string().min(1),
   date,
   endDate: date.optional(),
+  dateLabel: z.string().optional(),
   type: z.string(),
   status: z.enum(["upcoming", "past"]),
   description: z.string(),
@@ -81,6 +82,16 @@ export const GalleryItemSchema = z
     fullSize: localMedia.optional(),
     videoUrl: localMedia.optional(),
     alt: z.string(),
+    titleAr: z.string().optional(),
+    altAr: z.string().optional(),
+    imageFit: z.enum(["contain", "cover"]).optional(),
+    postId: z.string().optional(),
+    postTitle: z.string().optional(),
+    postTitleAr: z.string().optional(),
+    publishedAt: date.optional(),
+    caption: z.string().optional(),
+    captionAr: z.string().optional(),
+    sourceUrl: safeUrl.optional(),
   })
   .refine(
     (item) => item.type !== "video" || Boolean(item.videoUrl),
@@ -166,8 +177,10 @@ export function getGallery(locale: Locale = "en"): GalleryItem[] {
         ? item
         : {
             ...item,
-            title: translateGallery(item),
-            alt: translateGallery(item),
+            title: item.titleAr || translateGallery(item),
+            alt: item.altAr || translateGallery(item),
+            postTitle: item.postTitleAr || item.postTitle,
+            caption: item.captionAr || item.caption,
           },
     );
 }

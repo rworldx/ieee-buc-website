@@ -12,7 +12,9 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={`grid gap-5 ${items.length === 1 ? "grid-cols-1" : "sm:grid-cols-2 lg:grid-cols-3"}`}
+      >
         {items.map((item, index) => (
           <figure key={item.id} className="min-w-0">
             <button
@@ -22,14 +24,22 @@ export default function GalleryGrid({ items }: { items: GalleryItem[] }) {
                 setCurrent(index);
                 setOpen(true);
               }}
-              className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line bg-surface-soft"
+              className="gallery-media-button group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line bg-surface-soft"
             >
               <Image
                 src={item.thumbnail}
                 alt={item.alt}
                 fill
-                sizes="(max-width:639px) 90vw, (max-width:1023px) 45vw, 370px"
-                className="object-cover transition-transform duration-300 group-hover:scale-[1.025]"
+                sizes={
+                  items.length === 1
+                    ? "(max-width:1023px) 90vw, 560px"
+                    : "(max-width:639px) 90vw, (max-width:1023px) 45vw, 370px"
+                }
+                className={
+                  item.imageFit === "contain"
+                    ? "object-contain"
+                    : "object-cover"
+                }
               />
               <span className="absolute bottom-3 end-3 flex size-10 items-center justify-center rounded-full bg-white text-ieee-blue shadow-sm">
                 {item.type === "video" ? (
