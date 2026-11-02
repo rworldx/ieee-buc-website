@@ -9,7 +9,7 @@
     "type": "Workshop",
     "status": "upcoming",
     "description": "A weekly, hands-on workshop series on artificial intelligence and robotics, led by Dr. Qamar Ul Islam.",
-    "longDescription": "A one-hour, hands-on workshop series in artificial intelligence and robotics, run by the IEEE BUC Student Branch and led by Dr. Qamar Ul Islam.\n\nSessions take place every Monday from 1:00 to 2:00 PM in Building A, Lab 5, starting 2 November 2026.\n\nThe series covers Python for robotics, computer vision, AI object detection, SLAM, autonomous navigation and practical robotics demonstrations. Admission is free. Register on the official IEEE vTools event page.",
+    "longDescription": "A one-hour, hands-on workshop series in artificial intelligence and robotics, run by the IEEE BUC Student Branch and led by Dr. Qamar Ul Islam.\n\nSessions take place every Monday from 1:00 to 2:00 PM in Building A, Lab 5, starting 2 November 2026.\n\nThe series covers Python for robotics, computer vision, AI object detection, SLAM, autonomous navigation and practical robotics demonstrations. Admission is free. Register on the official IEEE vTools event page. You don't need an IEEE account: choose to register as a guest.",
     "location": "Building A, Lab 5, Buraimi University College",
     "admission": "Free admission",
     "image": "/images/community/ai-robotics-2026.jpg",
