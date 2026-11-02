@@ -1,5 +1,32 @@
 [
   {
+    "id": "ai-robotics-2026",
+    "slug": "ai-robotics-2026",
+    "title": "Workshop series in Artificial Intelligence and Robotics",
+    "date": "2026-11-02T13:00:00+04:00",
+    "endDate": "2026-11-02T14:00:00+04:00",
+    "dateLabel": "Series starts",
+    "type": "Workshop",
+    "status": "upcoming",
+    "description": "A weekly, hands-on workshop series on artificial intelligence and robotics, led by Dr. Qamar Ul Islam.",
+    "longDescription": "A one-hour, hands-on workshop series in artificial intelligence and robotics, run by the IEEE BUC Student Branch and led by Dr. Qamar Ul Islam.\n\nSessions take place every Monday from 1:00 to 2:00 PM in Building A, Lab 5, starting 2 November 2026.\n\nThe series covers Python for robotics, computer vision, AI object detection, SLAM, autonomous navigation and practical robotics demonstrations. Admission is free. Register on the official IEEE vTools event page.",
+    "location": "Building A, Lab 5, Buraimi University College",
+    "admission": "Free admission",
+    "image": "/images/community/ai-robotics-2026.jpg",
+    "imageFit": "contain",
+    "registrationLink": "https://events.vtools.ieee.org/m/588240",
+    "calendarLink": "https://events.vtools.ieee.org/event/588240/ical",
+    "speakers": [
+      {
+        "name": "Dr. Qamar Ul Islam",
+        "role": "Workshop series lead",
+        "organization": "Buraimi University College"
+      }
+    ],
+    "gallery": [],
+    "videos": []
+  },
+  {
     "id": "cybersecurity-trends-2026",
     "slug": "cybersecurity-trends-2026",
     "title": "Cybersecurity Trends 2026: Navigating the New Threat Landscape",
@@ -7,8 +34,8 @@
     "endDate": "2026-10-27T19:30:00+04:00",
     "type": "Webinar",
     "status": "upcoming",
-    "description": "Join IEEE BUC for a virtual session on the changing cybersecurity landscape, featuring guest speakers from the University of Maryland Global Campus.",
-    "longDescription": "The IEEE Student Branch at Buraimi University College welcomes guest speakers from the University of Maryland Global Campus (UMGC) for a webinar on cybersecurity trends in 2026.\n\nJoin Dr. Mayyada Al Hammoshi and Dr. Chad Whistle for “Navigating the New Threat Landscape.” The session will take place online via Google Meet, from 6:00 to 7:30 PM Oman time.\n\nAdmission is free. Visit the official IEEE vTools event page for registration and attendance information.",
+    "description": "A virtual session on the changing cybersecurity landscape with guest speakers from the University of Maryland Global Campus.",
+    "longDescription": "The IEEE Student Branch at Buraimi University College hosted guest speakers from the University of Maryland Global Campus (UMGC) for a webinar on cybersecurity trends in 2026.\n\nDr. Mayyada Al Hammoshi and Dr. Chad Whistle led “Navigating the New Threat Landscape” online via Google Meet on 27 October, from 6:00 to 7:30 PM Oman time.\n\nThe session looked at how cyber education is moving from lectures to practice, through virtual labs, competitions, industry certifications and real client work, and closed with a discussion on which changes organizations should act on first.",
     "location": "Online via Google Meet",
     "online": true,
     "admission": "Free admission",
@@ -28,7 +55,10 @@
         "organization": "University of Maryland Global Campus"
       }
     ],
-    "gallery": [],
+    "gallery": [
+      "/images/community/cybersecurity-trends-2026-recap-1.jpg",
+      "/images/community/cybersecurity-trends-2026-recap-2.jpg"
+    ],
     "videos": []
   },
   {
