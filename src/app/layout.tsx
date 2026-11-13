@@ -21,7 +21,13 @@ const arabic = Noto_Sans_Arabic({
 export const metadata: Metadata = {
   title: "IEEE BUC Student Branch",
   description: "IEEE Student Branch at Buraimi University College, Oman",
-  icons: { icon: "/images/logo.svg", apple: "/images/logo.png" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/images/logo.png",
+  },
 };
 export const viewport: Viewport = {
   width: "device-width",
